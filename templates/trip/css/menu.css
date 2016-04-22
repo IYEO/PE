@@ -1,0 +1,34 @@
+.moduletable_topmenu {
+	font: bold 14px Arial, Helvetica, sans-serif;
+	text-transform: uppercase;
+	text-align: center;
+	background-color: #CCCCCC;
+	height: 36px;
+	border-bottom: 4px solid #FFFFFF;
+}
+.moduletable_topmenu ul {
+	margin-top: 10px;
+	float: left;
+	left: 50%;
+	position: relative;
+}
+.moduletable_topmenu ul li {
+	float: left;
+	left: -50%;	
+	list-style: none;	
+	position: relative;	
+	border-left: 2px ridge #FFFFFF;	
+	border-right: 2px ridge #FFFFFF;	
+	margin-left: -2px;
+}
+.moduletable_topmenu ul li a {
+	display: block;	
+	padding: 0 15px;	
+	text-decoration: none;	
+	color: #FFFFFF;
+}
+.moduletable_topmenu li a:hover {
+	display: block;	
+	color: #98cfdd;	
+	text-decoration: underline;
+}

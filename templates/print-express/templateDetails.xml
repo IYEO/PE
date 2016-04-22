@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE install PUBLIC "-//Joomla! 3/0//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/3.0/template-install.dtd">
+<extension version="3.5" type="template" client="site">
+	<name>print-express</name>
+	<version>1.0</version>
+	<creationDate>05/04/2016</creationDate>
+	<author>YEO</author>
+	<authorEmail>admin@print-express99.ru</authorEmail>
+	<authorUrl>print-express99.ru</authorUrl>
+	<copyright>Copyright (C) 1999-2016 Print-Express. All rights reserved.</copyright>
+	<description><![CDATA[<p>Типография "Принт-Экспресс"</p>]]></description>
+	<files>
+		<folder>css</folder>
+		<folder>fonts</folder>
+		<folder>html</folder>
+                <folder>img</folder>
+		<folder>js</folder>
+                <folder>language</folder>
+		<filename>error.php</filename>
+		<filename>favicon.ico</filename>
+		<filename>index.php</filename>
+		<filename>templateDetails.xml</filename>
+                <filename>template_preview.png</filename>
+		<filename>template_thumbnail.png</filename>
+	</files>
+	<positions>
+		<position>brand</position>
+		<position>logo</position>
+		<position>top</position>
+		<position>awards</position>
+		<position>breadcrumbs</position>
+		<position>left</position>
+		<position>content</position>
+		<position>right</position>
+		<position>search</position>
+		<position>footer</position>
+		<position>debug</position>
+		<position>bar</position>
+	</positions>
+</extension>
