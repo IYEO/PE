@@ -6745,3 +6745,7 @@ body {
   left: auto;
   right: auto;
 }
+.nav > li > a[class^=navbar-brand] {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}

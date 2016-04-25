@@ -3,11 +3,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 $app = JFactory::getApplication();
-$params = JFactory::getApplication()->getTemplate(true)->params;
 $doc = JFactory::getDocument();
-/* $this->language = $doc->language;
-  $this->direction = $doc->direction; */
-
 $menu = $app->getMenu()->getActive();
 $pageclass = '';
 if (is_object($menu)) {
@@ -29,30 +25,44 @@ if (is_object($menu)) {
         ?>
     </head>
     <body>
-        <!--<jdoc:include type="modules" name="brand" style="none" />-->
-        <jdoc:include type="modules" name="top" style="none" />
+        <?php if($this->countModules('top')) :      //если отображается модуль с Navbar ?>
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-menu" aria-expanded="false">
+                            <span class="sr-only"><?php echo JText::_('TPL_PE_MODCHROME_PE_FIXED_NAVBAR_TOGGLE_NAVIGATION'); ?></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <?php if($this->countModules('brand')) :    //если отображается модуль с брендом компании в Navbar ?>
+                            <jdoc:include type="modules" name="brand" style="none" />
+                        <?php endif;?>
+                    </div>
 
-
-        <!--Breadcrumbs-->
-        <!--            <div class="row">-->
+                    <jdoc:include type="modules" name="top" style="none" />
+                    
+                    <?php if($this->countModules('search')) :    //если отображается модуль поиска ?>
+                            <jdoc:include type="modules" name="search" style="none" />
+                    <?php endif;?>
+                </div>
+            </nav>
+        <?php endif;
+        
+//      Breadcrumbs        ?>
         <jdoc:include type="modules" name="breadcrumbs" style="none" />
-        <!--            </div>-->
-        <!--Content-->
-        <!--            <div class="row">-->
+        <?php        
+        
+//      Content        ?>
         <jdoc:include type="message" />
         <jdoc:include type="component" />
-        <!--            </div>-->
-
-        <!--Footer-->
-        <!--            <footer>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <jdoc:include type="modules" name="footer" style="none" />
-                            </div>
-                        </div>
-                    </footer>-->
+        <?php
+        
+//      Footer      ?>                                  
         <jdoc:include type="modules" name="footer" style="none" />
-        <!--        </div>-->
+        <?php
+        
+//      Debug        ?>
         <jdoc:include type="modules" name="debug" style="none" />
     </body>
 </html>
