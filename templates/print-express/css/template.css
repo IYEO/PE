@@ -6733,8 +6733,14 @@ and open the template in the editor.
     Created on : 07.04.2016, 14:34:53
     Author     : YEO
 */
+html {
+  width: 100%;
+  height: 100%;
+}
 body {
   padding-top: 50px;
+  width: 100%;
+  height: 100%;
 }
 .logosvg {
   background: url("../../../images/logosvg.svg");
@@ -6748,4 +6754,49 @@ body {
 .nav > li > a[class^=navbar-brand] {
   padding-top: 15px;
   padding-bottom: 15px;
+}
+.carousel,
+.item,
+.active {
+  height: 100%;
+}
+.carousel-inner {
+  height: 100%;
+}
+.juice {
+  /*    min-width: 100%;
+    min-height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    position: fixed;*/
+  height: 100%;
+  width: 100%;
+  background: url("../../../images/2.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.apple {
+  background: url("../../../images/sampledata/fruitshop/apple.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.freedom {
+  height: 100%;
+  width: 100%;
+  background: url("../../../images/1.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.q {
+  height: 20px;
+  max-height: 20px;
+  width: 100%;
+  position: relative;
+  background: url("../../../images/4.png") repeat-x;
 }

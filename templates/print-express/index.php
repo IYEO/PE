@@ -25,7 +25,11 @@ if (is_object($menu)) {
         ?>
     </head>
     <body>
-        <?php if($this->countModules('top')) :      //если отображается модуль с Navbar ?>
+        <?php if($this->countModules('search')) :    //если отображается модуль поиска ?>
+                <jdoc:include type="modules" name="search" style="none" />
+        <?php endif;
+
+        if($this->countModules('top')) :      //если отображается модуль с Navbar ?>
             <nav class="navbar navbar-default navbar-fixed-top">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -35,33 +39,28 @@ if (is_object($menu)) {
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <?php if($this->countModules('brand')) :    //если отображается модуль с брендом компании в Navbar ?>
-                            <jdoc:include type="modules" name="brand" style="none" />
-                        <?php endif;?>
+                        <jdoc:include type="modules" name="brand" style="none" />   <?php   //модуль с брендом компании в Navbar ?>
                     </div>
 
                     <jdoc:include type="modules" name="top" style="none" />
-                    
-                    <?php if($this->countModules('search')) :    //если отображается модуль поиска ?>
-                            <jdoc:include type="modules" name="search" style="none" />
-                    <?php endif;?>
                 </div>
             </nav>
         <?php endif;
-        
+
 //      Breadcrumbs        ?>
         <jdoc:include type="modules" name="breadcrumbs" style="none" />
-        <?php        
-        
+        <?php
+
 //      Content        ?>
         <jdoc:include type="message" />
+        <jdoc:include type="modules" name="carousel" style="none" />    <?php  //модуль "Carousel" для показа слайд-шоу ?>
         <jdoc:include type="component" />
         <?php
-        
-//      Footer      ?>                                  
+
+//      Footer      ?>
         <jdoc:include type="modules" name="footer" style="none" />
         <?php
-        
+
 //      Debug        ?>
         <jdoc:include type="modules" name="debug" style="none" />
     </body>
