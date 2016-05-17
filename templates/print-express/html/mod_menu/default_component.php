@@ -16,7 +16,7 @@ $class = $item->anchor_css ? 'class="' . $item->anchor_css . '" ' : '';
 //Проверка на наличие иконок (класс иконок должен быть введён последним в поле "CSS-класс ссылки"):
 if (substr_count(trim($item->anchor_css), $IconClass) > 0) {
     $class = 'class="' . substr(trim($item->anchor_css), 0, stripos(trim($item->anchor_css), $IconClass)) . '"';
-    $IconSpan = '<span class="'. substr(trim($item->anchor_css), stripos(trim($item->anchor_css), $IconClass), strlen(trim($item->anchor_css)) - stripos(trim($item->anchor_css), $IconClass)) . '"></span> ';
+    $IconSpan = '<span class="'. substr(trim($item->anchor_css), stripos(trim($item->anchor_css), $IconClass), strlen(trim($item->anchor_css)) - stripos(trim($item->anchor_css), $IconClass)) . '" aria-hidden="true"></span> ';
 }
 
 $title = $item->anchor_title ? 'title="' . $item->anchor_title . '" ' : '';

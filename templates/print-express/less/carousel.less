@@ -121,7 +121,7 @@
     outline: 0;
     color: @carousel-control-color;
     text-decoration: none;
-    .opacity(.9);
+    .opacity(.6);
   }
 
   // Toggles
@@ -204,11 +204,44 @@
     background-color: #000 \9; // IE8
     background-color: rgba(0,0,0,0); // IE9
   }
-  .active {
-    margin: 0;
-    width:  12px;
-    height: 12px;
-    background-color: @carousel-indicator-active-bg;
+  a {
+    display: inline-block;
+    margin: 10px 30px;
+    cursor: pointer;
+    transition: all 0.8s ease 0s;
+
+    &:hover,
+    &:focus {
+      margin: 10px 27px;
+    }
+
+      & span {
+        transition: all 0.8s ease 0s;
+
+        &:hover,
+        &:focus {
+          font-size: 56px;
+        }
+    }
+
+    // IE8-9 hack for event handling
+    //
+    // Internet Explorer 8-9 does not support clicks on elements without a set
+    // `background-color`. We cannot use `filter` since that's not viewed as a
+    // background color by the browser. Thus, a hack is needed.
+    // See https://developer.mozilla.org/en-US/docs/Web/Events/click#Internet_Explorer
+    //
+    // For IE8, we set solid black as it doesn't support `rgba()`. For IE9, we
+    // set alpha transparency for the best results possible.
+/*    background-color: #000 \9; // IE8
+    background-color: rgba(0,0,0,0); // IE9*/
+  }
+  .active {      
+/*    bottom: bottom - 20px;*/
+/*    margin: 0;*/
+/*    width:  12px;
+    height: 12px;*/
+    /*background-color: @carousel-indicator-active-bg;*/
   }
 }
 
@@ -219,7 +252,7 @@
   position: absolute;
   left: 15%;
   right: 15%;
-  bottom: 20px;
+  bottom: 100px;
   z-index: 10;
   padding-top: 20px;
   padding-bottom: 20px;
