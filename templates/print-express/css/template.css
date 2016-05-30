@@ -6844,3 +6844,13 @@ body {
 .fs50 {
   font-size: 50px;
 }
+.plotter {
+  background: url("../../../images/headers/raindrops.jpg") no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.plotter p {
+  color: #ffffff;
+}

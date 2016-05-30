@@ -58,7 +58,7 @@ class JConfig {
 	public $lifetime = '60';
 	public $session_handler = 'database';
 	public $MetaRights = '© ООО "Принт-Экспресс", 2016';
-	public $sitename_pagetitles = '2';
+	public $sitename_pagetitles = '0';
 	public $force_ssl = '0';
 	public $feed_email = 'site';
 	public $cookie_domain = '';

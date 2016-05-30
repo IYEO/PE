@@ -24,12 +24,12 @@
 		<filename>template_thumbnail.png</filename>
 	</files>
 	<positions>
-		<position>brand</position>		
-		<position>top</position>		
-		<position>breadcrumbs</position>		
-		<position>carousel</position>		
+		<position>brand</position>
+		<position>top</position>
+		<position>breadcrumbs</position>
+		<position>carousel</position>
 		<position>search</position>
 		<position>footer</position>
-		<position>debug</position>		
+		<position>debug</position>
 	</positions>
 </extension>
