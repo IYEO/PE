@@ -15,7 +15,7 @@ if (is_object($menu)) {
     <head>
         <jdoc:include type="head" />
         <?php
-        $doc->setGenerator(""); //remove from <head> "Joomla! - Open Source Content Management"
+        $doc->setGenerator(""); //remove "Joomla! - Open Source Content Management" from <head>
         $doc->setMetaData("X-UA-Compatible", "IE=edge", TRUE);
         $doc->setMetaData("viewport", "width=device-width, initial-scale=1", FALSE);
         JHtml::stylesheet('template.css', array(), TRUE);   //add Bootstrap stylesheet (v.3.3.6)
@@ -53,6 +53,7 @@ if (is_object($menu)) {
 
 //      Content        ?>
         <jdoc:include type="message" />
+        
         <jdoc:include type="modules" name="carousel" style="none" />    <?php  //модуль "Carousel" для показа слайд-шоу ?>
         <jdoc:include type="component" />
         <?php

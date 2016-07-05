@@ -13,14 +13,13 @@ JHtml::_('jquery.framework');
 
 $modules  = JModuleHelper::getModules("scrollspy");
     if (!empty($modules)) :
-        // Добавляем data-атрибуты, чтобы корректно работало боковое меню навигации:
+        // Добавляем data-атрибуты, чтобы корректно работало боковое меню
         JFactory::getDocument()->addScriptDeclaration('
             jQuery(window).ready(function () {
-                jQuery(\'body\').attr(\'data-spy\', \'scroll\').attr(\'data-target\', \'#' . $modules[0]->title . '\');
-            });            
-        ');
+                jQuery(\'body\').attr(\'data-spy\', \'scroll\').attr(\'data-target\', \'#spyproducts\').attr(\'data-offset-top\', \'100\');
+            });');
     endif;
-    $h1 = false;    //Для вывода заголовка категории в тэге <H1> вместо <H2>, если не отображается заголовок страницы
+$h1 = false;    //Для вывода заголовка категории в тэге <H1> вместо <H2>, если не отображается заголовок страницы
 ?>
 
 <div class="<?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Blog">
@@ -44,7 +43,7 @@ $modules  = JModuleHelper::getModules("scrollspy");
                     echo $h; ?>
             <?php if (!$h1) : ?>
                 </div>
-            <?php endif; ?>
+            <?php endif; ?>                
         <?php endif; ?>
 
         <?php if ($this->params->get('show_cat_tags', 1) && !empty($this->category->tags->itemTags)) : ?>
@@ -69,22 +68,7 @@ $modules  = JModuleHelper::getModules("scrollspy");
             <?php endif; ?>
         <?php endif; ?>
 
-    <div class="row">
-        <?php
-        if (!empty($modules)) : ?>
-            <div class="hidden-print hidden-xs hidden-sm col-md-4 col-lg-3">
-                <?php
-                $attribs  = array();
-                $attribs['style'] = 'xhtml';
-                foreach ($modules as $mod)
-                {
-                    echo JModuleHelper::renderModule($mod, $attribs);
-                }
-                ?>
-            </div>
-            <div class="col-xs-12 col-md-8 col-lg-9">
-            <div class="row">
-        <?php endif; ?>
+    <div class="row">        
                 <?php $leadingcount = 0; ?>
                 <?php if (!empty($this->lead_items)) : ?>
                     <div class="items-leading col-xs-12 col-sm-12 col-md-12 col-lg-12 clearfix">
@@ -111,55 +95,9 @@ $modules  = JModuleHelper::getModules("scrollspy");
                 <?php if (!empty($this->intro_items)) : ?>
                     <?php foreach ($this->intro_items as $key => &$item) : ?>
                         <?php $rowcount = ((int) $key % (int) $this->columns) + 1; ?>
-                        <?php //Получаем родительскую категорию конкретного материала (подкатегорию категории "Продукция"):
-                            $categories = JCategories::getInstance('Content');
-                            $child = $categories->get($item->catid);
-
-                            //Выводим заголовок подкатегории, если ID категории текущего материала не совпадает с ID категории предыдущего выведенного материала:
-                            if ($item->catid <> $previousSubCatId) : ?>
-                                <?php
-                                if ($previousSubCatId <> 0) :
-                                    $inGroupCounter = 0;
-                                endif;
-                                $previousSubCatId = $item->catid;
-                                ?>
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <?php if ($lang->isRtl()) : ?>
-                                        <span id="<?php echo $this->escape($child->alias); ?>"></span>
-                                        <h2 class="page-header item-title">
-                                            <?php if ( $this->params->get('show_cat_num_articles', 1)) : ?>
-                                                <span class="badge badge-info tip hasTooltip" title="<?php echo JHtml::tooltipText('COM_CONTENT_NUM_ITEMS'); ?>">
-                                                    <?php echo $child->getNumItems(true); ?>
-                                                </span>
-                                            <?php endif; ?>
-                                            <a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($child->id)); ?>">
-                                            <?php echo $this->escape($child->title); ?></a>
-                                        </h2>
-                                        <?php else : ?>
-                                        <span id="<?php echo $this->escape($child->alias); ?>"></span>
-                                        <h2 class="page-header item-title"><a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($child->id));?>">
-                                            <?php echo $this->escape($child->title); ?></a>
-                                            <?php if ( $this->params->get('show_cat_num_articles', 1)) : ?>
-                                                <span class="badge badge-info tip hasTooltip" title="<?php echo JHtml::tooltipText('COM_CONTENT_NUM_ITEMS'); ?>">
-                                                    <?php echo JText::_('COM_CONTENT_NUM_ITEMS'); ?>&nbsp;
-                                                    <?php echo $child->getNumItems(true); ?>
-                                                </span>
-                                            <?php endif; ?>
-                                        </h2>
-                                        <?php endif;?>
-                                </div>
-                            <?php endif; ?>
-
-                            <?php
-                            $mdcolSize = 0;   //размер md-колонок (Bootstrap) в зависимости от того, выводится ли боковое меню или нет
-
-                            if (!empty($modules)) {
-                                $mdcolSize = 6;
-                            } else {
-                                $mdcolSize = round((12 / $this->columns));
-                            } ?>
-
-                            <div class="item column-<?php echo $rowcount; ?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?> col-xs-12 col-sm-6 col-md-<?php echo $mdcolSize; ?> col-lg-<?php echo round((12 / $this->columns)); ?>"
+                        
+                    
+                            <div class="item column-<?php echo $rowcount; ?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?> col-xs-12 col-sm-6 col-md-<?php echo round((12 / $this->columns)); ?> col-lg-<?php echo round((12 / $this->columns)); ?>"
                                 itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
                                 <div class="thumbnail">
                                          <?php
@@ -188,10 +126,6 @@ $modules  = JModuleHelper::getModules("scrollspy");
                             <p class="counter pull-right"> <?php echo $this->pagination->getPagesCounter(); ?> </p>
                         <?php endif; ?>
                         <?php echo $this->pagination->getPagesLinks(); ?> </div>
-                <?php endif; ?>
-        <?php if (!empty($modules)) : ?>
-            </div>
-        </div>
-        <?php endif; ?>
+                <?php endif; ?>        
     </div>
 </div>

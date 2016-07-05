@@ -27,6 +27,7 @@
 		<position>brand</position>
 		<position>top</position>
 		<position>breadcrumbs</position>
+                <position>scrollspy</position>
 		<position>carousel</position>
 		<position>search</position>
 		<position>footer</position>

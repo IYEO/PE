@@ -6370,6 +6370,22 @@ button.close {
   padding-left: 0;
   list-style: none;
   text-align: center;
+  /*  .active {
+      color: @orange;
+      img {
+          width: 66px;
+      }
+      
+      &:hover,
+      &:focus {
+        transform: none;     
+      }
+    bottom: bottom - 20px;
+    margin: 0;
+    width:  12px;
+    height: 12px;
+    background-color: @carousel-indicator-active-bg;
+  }  */
 }
 .carousel-indicators li {
   display: inline-block;
@@ -6384,30 +6400,26 @@ button.close {
   background-color: rgba(0, 0, 0, 0);
 }
 .carousel-indicators a {
+  width: 150px;
+  color: #eeeeee;
   display: inline-block;
-  margin: 10px 30px;
   cursor: pointer;
   transition: all 0.8s ease 0s;
   /*    background-color: #000 \9; // IE8
     background-color: rgba(0,0,0,0); // IE9*/
 }
-.carousel-indicators a:hover,
-.carousel-indicators a:focus {
-  margin: 10px 27px;
-}
-.carousel-indicators a span {
+.carousel-indicators a img {
+  width: 60px;
   transition: all 0.8s ease 0s;
 }
-.carousel-indicators a span:hover,
-.carousel-indicators a span:focus {
-  font-size: 56px;
+.carousel-indicators a:hover,
+.carousel-indicators a:focus {
+  color: #ff9933;
 }
-.carousel-indicators .active {
-  /*    bottom: bottom - 20px;*/
-  /*    margin: 0;*/
-  /*    width:  12px;
-    height: 12px;*/
-  /*background-color: @carousel-indicator-active-bg;*/
+.carousel-indicators a:hover img,
+.carousel-indicators a:focus img {
+  transform: scale(1.1);
+  color: #000000;
 }
 .carousel-caption {
   position: absolute;
@@ -6764,6 +6776,10 @@ body {
   padding-top: 50px;
   width: 100%;
   height: 100%;
+  position: relative;
+}
+P {
+  text-indent: 20px;
 }
 .fill {
   width: 100%;
@@ -6795,6 +6811,10 @@ body {
 .carousel-inner .item .container {
   margin-bottom: 50px;
 }
+.carousel P,
+.carousel-inner P {
+  text-indent: 0px;
+}
 .carousel-inner .jumbotron {
   background-color: transparent;
 }
@@ -6823,13 +6843,15 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  box-shadow: inset 0px 0px 3000px rgba(0, 0, 0, 0.8);
 }
 .step3 {
-  background: url("../../../images/bg/bg3.jpg") no-repeat center center fixed;
+  background: url("../../../images/bg/bg6.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  box-shadow: inset 0px 0px 3000px rgba(0, 0, 0, 0.8);
 }
 .step4 {
   background: url("../../../images/bg/bg4.jpg") no-repeat center center fixed;
@@ -6843,6 +6865,7 @@ body {
 }*/
 .fs50 {
   font-size: 50px;
+  color: white;
 }
 .plotter {
   background: url("../../../images/headers/raindrops.jpg") no-repeat center center scroll;
@@ -6853,4 +6876,48 @@ body {
 }
 .plotter p {
   color: #ffffff;
+}
+.affix {
+  top: 60px;
+}
+/*
+
+#spyproducts, #spyservices {
+    margin-top: 40px;
+}*/
+.thumbnail div[class*=item-image] {
+  overflow: hidden;
+}
+.thumbnail div[class*=item-image] img {
+  transition: all 0.5s ease 0s;
+}
+.thumbnail div[class*=item-image] img:hover {
+  transform: scale(1.2);
+}
+.carousel-inner .jumbotron h1 {
+  font-size: 40px;
+}
+.carousel-inner .thumbnail {
+  background-color: transparent;
+  border: none;
+}
+.carousel-inner .img-circle {
+  height: 100px;
+  width: 100px;
+  border: 10px solid;
+  padding: 25px 0px;
+  margin-bottom: 20px;
+}
+.carousel-inner .img-circle + p {
+  font-size: 16px;
+  margin: 0px 7px 10px;
+}
+.carousel-inner #first {
+  border-color: #B6127A;
+}
+.carousel-inner #second {
+  border-color: #00B9B9;
+}
+.carousel-inner #third {
+  border-color: #3295EA;
 }

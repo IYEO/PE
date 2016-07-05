@@ -205,23 +205,25 @@
     background-color: rgba(0,0,0,0); // IE9
   }
   a {
+    width: 150px;
+    color: @gray-lighter;
     display: inline-block;
-    margin: 10px 30px;
     cursor: pointer;
-    transition: all 0.8s ease 0s;
+    transition: all 0.8s ease 0s;    
+
+    img {
+        width: 60px;
+        transition: all 0.8s ease 0s;
+    }
 
     &:hover,
     &:focus {
-      margin: 10px 27px;
-    }
+      color: @orange;
 
-      & span {
-        transition: all 0.8s ease 0s;
-
-        &:hover,
-        &:focus {
-          font-size: 56px;
-        }
+      img {
+        transform: scale(1.1);
+        color: @gray-base;
+      }
     }
 
     // IE8-9 hack for event handling
@@ -236,13 +238,22 @@
 /*    background-color: #000 \9; // IE8
     background-color: rgba(0,0,0,0); // IE9*/
   }
-  .active {      
-/*    bottom: bottom - 20px;*/
-/*    margin: 0;*/
-/*    width:  12px;
-    height: 12px;*/
-    /*background-color: @carousel-indicator-active-bg;*/
-  }
+/*  .active {
+      color: @orange;
+      img {
+          width: 66px;
+      }
+      
+      &:hover,
+      &:focus {
+        transform: none;     
+      }
+    bottom: bottom - 20px;
+    margin: 0;
+    width:  12px;
+    height: 12px;
+    background-color: @carousel-indicator-active-bg;
+  }  */
 }
 
 // Optional captions

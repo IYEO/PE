@@ -16,7 +16,7 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
 <?php if ($params->get('show_title') || $displayData->state == 0 || ($params->get('show_author') && !empty($displayData->author))) : ?>
     <?php if ($params->get('show_title')) : ?>
-        <h3 itemprop="name">
+        <h3 id="<?php echo $this->escape($displayData->alias); ?>" itemprop="name">
             <?php if ($params->get('link_titles') && $params->get('access-view')) : ?>
                 <a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($displayData->slug, $displayData->catid, $displayData->language)); ?>" itemprop="url">
                     <?php echo $this->escape($displayData->title); ?></a>
