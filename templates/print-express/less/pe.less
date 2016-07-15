@@ -39,9 +39,22 @@ P {
     right: auto
 };
 
+
+@media (min-width: @screen-sm-min) {
+    .navbar-nav > li {
+        &:hover, &:active {
+            border-top: solid #CC6666;
+
+            > a {
+                padding-top: @navbar-padding-vertical - 3;
+            }
+        }
+    }
+}
+
+
 .nav > li > a[class^=navbar-brand] {
-    padding-top: @navbar-padding-vertical;
-    padding-bottom: @navbar-padding-vertical;
+   padding-top: @navbar-padding-vertical - 2;   
 }
 
 .carousel, .carousel-inner {

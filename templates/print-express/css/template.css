@@ -3512,7 +3512,7 @@ tbody.collapse.in {
   display: none;
   float: left;
   min-width: 160px;
-  padding: 5px 0;
+  padding: 1px 0;
   margin: 2px 0 0;
   list-style: none;
   font-size: 14px;
@@ -3531,13 +3531,13 @@ tbody.collapse.in {
 }
 .dropdown-menu .divider {
   height: 1px;
-  margin: 9px 0;
+  margin: 1px;
   overflow: hidden;
   background-color: #666666;
 }
 .dropdown-menu > li > a {
   display: block;
-  padding: 3px 20px;
+  padding: 9px 20px;
   clear: both;
   font-weight: normal;
   line-height: 1.42857143;
@@ -3556,7 +3556,7 @@ tbody.collapse.in {
   color: #ffcc33;
   text-decoration: none;
   outline: 0;
-  background-color: #666666;
+  background-color: #4d4d4d;
 }
 .dropdown-menu > .disabled > a,
 .dropdown-menu > .disabled > a:hover,
@@ -3994,9 +3994,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .nav .nav-divider {
   height: 1px;
-  margin: 9px 0;
+  margin: 1px;
   overflow: hidden;
-  background-color: #e5e5e5;
+  background-color: #888888 /*#e5e5e5*/;
 }
 .nav > li > a > img {
   max-width: none;
@@ -4498,7 +4498,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
   color: #ffcc33;
-  background-color: transparent;
+  background-color: #494949;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
@@ -4539,7 +4539,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
     color: #ffcc33;
-    background-color: transparent;
+    background-color: #494949;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
@@ -6794,9 +6794,18 @@ P {
   left: auto;
   right: auto;
 }
+@media (min-width: 768px) {
+  .navbar-nav > li:hover,
+  .navbar-nav > li:active {
+    border-top: solid #CC6666;
+  }
+  .navbar-nav > li:hover > a,
+  .navbar-nav > li:active > a {
+    padding-top: 12px;
+  }
+}
 .nav > li > a[class^=navbar-brand] {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 13px;
 }
 .carousel,
 .carousel-inner {
@@ -6920,4 +6929,9 @@ P {
 }
 .carousel-inner #third {
   border-color: #3295EA;
+}
+#mod-finder-searchform {
+  /*    position: absolute;
+    z-index: 999;*/
+  /*padding: @navbar-padding-vertical - 3 @navbar-padding-horizontal;*/
 }

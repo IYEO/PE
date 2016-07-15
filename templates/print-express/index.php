@@ -9,7 +9,16 @@ $pageclass = '';
 if (is_object($menu)) {
     $pageclass = $menu->params->get('pageclass_sfx');
 }
+
+if($this->countModules('search')) :    //если отображается модуль поиска
+    // Добавляем data-атрибуты в пункт меню поиска, чтобы корректно работало с помощью collapse:
+    JFactory::getDocument()->addScriptDeclaration('
+        jQuery(window).ready(function () {
+            jQuery(\'a.search\').attr(\'data-toggle\', \'collapse\').attr(\'data-target\', \'#search\');
+        });');
+endif;
 ?>
+
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" >
     <head>
@@ -25,11 +34,7 @@ if (is_object($menu)) {
         ?>
     </head>
     <body>
-        <?php if($this->countModules('search')) :    //если отображается модуль поиска ?>
-                <jdoc:include type="modules" name="search" style="none" />
-        <?php endif;
-
-        if($this->countModules('top')) :      //если отображается модуль с Navbar ?>
+        <?php if($this->countModules('top')) :      //если отображается модуль с Navbar ?>
             <nav class="navbar navbar-default navbar-fixed-top">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -40,9 +45,11 @@ if (is_object($menu)) {
                             <span class="icon-bar"></span>
                         </button>
                         <jdoc:include type="modules" name="brand" style="none" />   <?php   //модуль с брендом компании в Navbar ?>
-                    </div>
-
-                    <jdoc:include type="modules" name="top" style="none" />
+                    </div><?php
+//                  Top Menu          ?>
+                    <jdoc:include type="modules" name="top" style="none" /><?php
+//                  Search          ?>
+                    <jdoc:include type="modules" name="search" style="none" />
                 </div>
             </nav>
         <?php endif;
@@ -53,7 +60,7 @@ if (is_object($menu)) {
 
 //      Content        ?>
         <jdoc:include type="message" />
-        
+
         <jdoc:include type="modules" name="carousel" style="none" />    <?php  //модуль "Carousel" для показа слайд-шоу ?>
         <jdoc:include type="component" />
         <?php

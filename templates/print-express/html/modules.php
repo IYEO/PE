@@ -23,6 +23,15 @@ function modChrome_pe_none($module, &$params, &$attribs) {
 function modChrome_pe_fixed_navbar($module, &$params, &$attribs) { ?>
     <div class="module<?php echo htmlspecialchars($params->get('moduleclass_sfx')); ?>" id="top-menu">
         <?php if (!empty($module->content)) echo $module->content; ?>
+        
+        <?php //Выводим в меню модуль поиска, если он опубликован:
+//        $searchModule = JModuleHelper::getModules('search');
+//        if (!empty($searchModule)) :
+//            jimport( 'joomla.application.module.helper' );
+//            $module = JModuleHelper::getModule('finder');
+//            $attribs['style'] = 'none';
+//            echo JModuleHelper::renderModule( $module, $attribs );
+//        endif; ?>
     </div>
     <?php
 }
