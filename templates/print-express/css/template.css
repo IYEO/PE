@@ -4742,8 +4742,8 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination > .active > span:focus {
   z-index: 3;
   color: #ffffff;
-  background-color: #428bca;
-  border-color: #428bca;
+  background-color: #ff9933;
+  border-color: #ff9933;
   cursor: default;
 }
 .pagination > .disabled > span,
@@ -4905,7 +4905,7 @@ a.label:focus {
   vertical-align: middle;
   white-space: nowrap;
   text-align: center;
-  background-color: #777777;
+  background-color: #009966;
   border-radius: 10px;
 }
 .badge:empty {
@@ -6929,9 +6929,4 @@ P {
 }
 .carousel-inner #third {
   border-color: #3295EA;
-}
-#mod-finder-searchform {
-  /*    position: absolute;
-    z-index: 999;*/
-  /*padding: @navbar-padding-vertical - 3 @navbar-padding-horizontal;*/
 }
