@@ -10,8 +10,11 @@
 defined('_JEXEC') or die;
 
 // Including fallback code for the placeholder attribute in the search field.
+//JHtml::script('respond.js', FALSE, TRUE);     //add Respond.js for IE8 users
 JHtml::_('jquery.framework');
+//JHtml::script('bootstrap.min.js', FALSE, TRUE);     //add Bootstrap .js (v.3.3.5)
 JHtml::_('script', 'system/html5fallback.js', false, true);
+//JHtml::_('behavior.formvalidator');
 
 if ($width)
 {
@@ -26,19 +29,19 @@ else
 }
 ?>
 <div id="search" class="search<?php echo $moduleclass_sfx ?>">
-	<form action="<?php echo JRoute::_('index.php');?>" method="post" role="search">
+    <form action="<?php echo JRoute::_('index.php');?>" method="post" role="search" class="form-validate">
             <div class="form-group">
                 <div class="input-group input-group-lg">
                     <?php
                             $output = '<label for="mod-search-searchword" class="hidden sr-only">' . $label . '</label> ';
-                            $output .= '<input name="searchword" id="mod-search-searchword" maxlength="' . $maxlength . '"  class="inputbox search-query form-control" type="search"' . $width;
+                            $output .= '<input name="searchword" id="mod-search-searchword" maxlength="' . $maxlength . '"  class="required  inputbox search-query form-control" type="search"' . $width;
                             $output .= ' placeholder="' . $text . '" />';
 
                             if ($button) :
                                     if ($imagebutton) :
                                             $btn_output = ' <input type="image" alt="' . $button_text . '" class="button" src="' . $img . '" onclick="this.form.searchword.focus();"/>';
                                     else :
-                                            $btn_output = ' <span class="input-group-btn"><button class="button btn btn-primary" onclick="this.form.searchword.focus();"><span class="glyphicon glyphicon-search"></span>' . $button_text . '</button></span>';
+                                            $btn_output = ' <span class="input-group-btn"><button class="button btn btn-primary validate" onclick="this.form.searchword.focus();"><span class="glyphicon glyphicon-search"></span>' . $button_text . '</button></span>';
                                     endif;
 
                                     switch ($button_pos) :
@@ -66,7 +69,7 @@ else
                     </div>
                     <input type="hidden" name="task" value="search" />
                     <input type="hidden" name="option" value="com_search" />
-                    <input type="hidden" name="Itemid" value="<?php echo $mitemid; ?>" />                
+                    <input type="hidden" name="Itemid" value="<?php echo $mitemid; ?>" />
             </div>
 	</form>
 </div>
