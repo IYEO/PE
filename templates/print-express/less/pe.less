@@ -133,11 +133,21 @@ P {
 }
 
 .plotter {
- background: url("/images/icons/png/plotter.png") no-repeat center center scroll;
-    -webkit-background-size: contain;
-    -moz-background-size: contain;
-    -o-background-size: contain;
-    background-size: contain;
+    background: url("/images/icons/svg/drawing.svg") no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 260px;
+    padding-top: 100px;
+
+    @media (max-width: @screen-xs-max) {
+        background: url("/images/icons/svg/plotter.svg") no-repeat center center scroll;
+        -webkit-background-size: contain;
+        -moz-background-size: contain;
+        -o-background-size: contain;
+        background-size: contain;
+    }
 }
 
 .affix {
