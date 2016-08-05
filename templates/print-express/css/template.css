@@ -6877,14 +6877,11 @@ P {
   color: white;
 }
 .plotter {
-  background: url("../../../images/headers/raindrops.jpg") no-repeat center center scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-.plotter p {
-  color: #ffffff;
+  background: url("/images/icons/png/plotter.png") no-repeat center center scroll;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
 }
 .affix {
   top: 60px;

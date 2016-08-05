@@ -168,7 +168,14 @@
 					label="JGLOBAL_NUM_LEADING_ARTICLES_LABEL"
 					size="3"
 				/>
-
+                                
+                                <field 
+                                        name="leading_articles_for_subcategory"
+                                        type="checkbox"
+                                        label="JGLOBAL_LEADING_ARTICLES_FOR_SUBCATEGORY_LABEL"
+                                        description="JGLOBAL_LEADING_ARTICLES_FOR_SUBCATEGORY_DESC"
+                                        value="0"
+                                        default="0" />
 				<field
 					name="num_intro_articles"
 					type="text"

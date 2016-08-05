@@ -70,7 +70,7 @@ $h1 = false;    //Для вывода заголовка категории в �
 
     <div class="row">        
                 <?php $leadingcount = 0; ?>
-                <?php if (!empty($this->lead_items)) : ?>
+                <?php if (!empty($this->lead_items) && $this->params->get('leading_articles_for_subcategory')) : ?>
                     <div class="items-leading col-xs-12 col-sm-12 col-md-12 col-lg-12 clearfix">
                         <?php foreach ($this->lead_items as &$item) : ?>
                             <div class="leading-<?php echo $leadingcount; ?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?>"
