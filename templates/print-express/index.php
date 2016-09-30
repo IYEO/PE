@@ -13,9 +13,21 @@ if (is_object($menu)) {
 if($this->countModules('search')) :    //если отображается модуль поиска
     // Добавляем data-атрибуты в пункт меню поиска, чтобы корректно работало с помощью collapse:
     JFactory::getDocument()->addScriptDeclaration('
-        jQuery(window).ready(function () {
-            jQuery(\'a.search\').attr(\'data-toggle\', \'collapse\').attr(\'data-target\', \'#search\');
+        jQuery(document).ready(function () {
+            jQuery(\'a.search\').attr(\'data-toggle\', \'collapse\');
         });');
+
+//    JFactory::getDocument()->addScriptDeclaration('
+//        jQuery(document).ready(function(){
+//            jQuery("a.search").click(function(){
+//                jQuery("#search").collapse(\'toggle\');
+//            });
+//        });
+//        ');
+//JFactory::getDocument()->addScriptDeclaration('
+//    jQuery(\'#spyproducts\').on(\'affix.bs.affix\', function() {
+//       jQuery(\'.affix\').toggleClass(\'col-md-4 col-lg-3\');
+//    });');
 endif;
 ?>
 
@@ -49,7 +61,7 @@ endif;
 //                  Top Menu          ?>
                     <jdoc:include type="modules" name="top" style="none" /><?php
 //                  Search          ?>
-                    <jdoc:include type="modules" name="search" style="none" />
+                    <jdoc:include type="modules" name="search" style="none" />                    
                 </div>
             </nav>
         <?php endif;

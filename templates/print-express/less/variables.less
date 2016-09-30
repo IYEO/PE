@@ -27,9 +27,11 @@
 @red:                   #CC3300;
 @yellow:                #FFCC33;
 @orange:                #FF9933;
-@pink:                  #CC3366;
+@pink:                  #CC6666;
 @purple:                #9966CC;
 @white:                 #fff;
+@marengo:               #4c5866;
+@marengo2:              #4a545c;
 
 //== Scaffolding
 //
@@ -93,6 +95,14 @@
 @icon-font-svg-id:        "glyphicons_halflingsregular";
 
 
+//## Specify custom location and filename of the included Glyphicons icon font.
+
+//** File name for all font files.
+@flaticon-font-name:          "flaticon";
+//** Element ID within SVG icon file.
+@flaticon-font-svg-id:        "flaticon";
+
+
 //== Components
 //
 //## Define common padding and border radius sizes and more. Values based on 14px text and 1.428 line-height (~20px to start).
@@ -117,9 +127,9 @@
 @border-radius-small:       3px;
 
 //** Global color for active items (e.g., navs or dropdowns).
-@component-active-color:    @white;
+@component-active-color:    @link-color;    //@white;
 //** Global background color for active items (e.g., navs or dropdowns).
-@component-active-bg:       @brand-primary;
+@component-active-bg:       @gray-lighter;    //@brand-primary;
 
 //** Width of the `border` for generating carets that indicator dropdowns.
 @caret-width-base:          4px;
@@ -242,7 +252,7 @@
 //## Dropdown menu container and contents.
 
 //** Background for the dropdown menu.
-@dropdown-bg:                    @gray-dark; //#fff;
+@dropdown-bg:                    darken(@marengo, 10%);   //@gray-dark; //#fff;
 //** Dropdown menu `border-color`.
 @dropdown-border:                rgba(76,76,76,.5);   //rgba(0,0,0,.15);
 //** Dropdown menu `border-color` **for IE8**.
@@ -375,15 +385,15 @@
 @navbar-collapse-max-height:       340px;
 
 @navbar-default-color:             @orange; //#777;
-@navbar-default-bg:                lighten(@gray-dark, 10%);  //#f8f8f8;
-@navbar-default-border:            darken(@navbar-default-bg, 6.5%);
+@navbar-default-bg:                @marengo;    //lighten(@gray-dark, 10%);  //#f8f8f8;
+@navbar-default-border:            darken(@marengo/*@navbar-default-bg*/, 6.5%);
 
 // Navbar links
 @navbar-default-link-color:                @orange; //#777;
 @navbar-default-link-hover-color:          @yellow; //#333;
-@navbar-default-link-hover-bg:             darken(@navbar-default-bg, 1.5%);    //transparent;
+@navbar-default-link-hover-bg:             darken(@marengo/*@navbar-default-bg*/, 1.5%);
 @navbar-default-link-active-color:         darken(@yellow, 15%); //#555;
-@navbar-default-link-active-bg:            darken(@navbar-default-bg, 6.5%);
+@navbar-default-link-active-bg:            darken(@marengo/*@navbar-default-bg*/, 6.5%);
 @navbar-default-link-disabled-color:       @gray; //#ccc;
 @navbar-default-link-disabled-bg:          transparent;
 
@@ -393,7 +403,7 @@
 @navbar-default-brand-hover-bg:            transparent;
 
 // Navbar toggle
-@navbar-default-toggle-hover-bg:           darken(@navbar-default-bg, 6.5%);    //#ddd;
+@navbar-default-toggle-hover-bg:           darken(@marengo/*@navbar-default-bg*/, 6.5%);    //#ddd;
 @navbar-default-toggle-icon-bar-bg:        @orange;  //#888;
 @navbar-default-toggle-border-color:       transparent; //#ddd;
 
@@ -465,9 +475,9 @@
 @pagination-hover-bg:                  @gray-lighter;
 @pagination-hover-border:              #ddd;
 
-@pagination-active-color:              #fff;
-@pagination-active-bg:                 @orange; //@brand-primary;
-@pagination-active-border:             @orange; //@brand-primary;
+@pagination-active-color:              @link-color;//#fff;
+@pagination-active-bg:                 @gray-lighter;//@marengo; //@brand-primary;
+@pagination-active-border:             #ddd;//@marengo; //@brand-primary;
 
 @pagination-disabled-color:            @gray-light;
 @pagination-disabled-bg:               #fff;
@@ -712,7 +722,7 @@
 //
 //##
 
-@panel-bg:                    #fff;
+@panel-bg:                    RGBA(76, 88, 102, 0.6); //#fff;
 @panel-body-padding:          15px;
 @panel-heading-padding:       10px 15px;
 @panel-footer-padding:        @panel-heading-padding;
@@ -781,7 +791,7 @@
 @badge-color:                 #fff;
 //** Linked badge text color on hover
 @badge-link-hover-color:      #fff;
-@badge-bg:                    #009966;    //#CC6666;  //@gray-light;
+@badge-bg:                    @pink;
 
 //** Badge text color in active nav link
 @badge-active-color:          @link-color;

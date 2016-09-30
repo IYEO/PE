@@ -1,0 +1,51 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 29/09/2016 14:11
+    */
+
+@font-face {
+  font-family: "Flaticon";
+  src: url('@{icon-font-path}@{flaticon-font-name}.eot');   //src: url("./Flaticon.eot");
+  src: url('@{icon-font-path}@{flaticon-font-name}.eot?#iefix') format("embedded-opentype"),
+       url('@{icon-font-path}@{flaticon-font-name}.woff') format("woff"),
+       url('@{icon-font-path}@{flaticon-font-name}.ttf') format("truetype"),
+       url('@{icon-font-path}@{flaticon-font-name}.svg#@{flaticon-font-svg-id}') format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url('@{icon-font-path}@{flaticon-font-name}.svg#@{flaticon-font-svg-id}') format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+.flaticon-cup       { &:before { content: "\f100"; } }
+.flaticon-daily-wall-calendar-on-day-3-page:before { content: "\f101"; }
+.flaticon-delivery-truck:before { content: "\f102"; }
+.flaticon-emoticon-square-smiling-face-with-closed-eyes:before { content: "\f103"; }
+.flaticon-meeting:before { content: "\f104"; }
+.flaticon-square:before { content: "\f105"; }
+    
+/*    $font-Flaticon-cup: "\f100";
+    $font-Flaticon-daily-wall-calendar-on-day-3-page: "\f101";
+    $font-Flaticon-delivery-truck: "\f102";
+    $font-Flaticon-emoticon-square-smiling-face-with-closed-eyes: "\f103";
+    $font-Flaticon-meeting: "\f104";
+    $font-Flaticon-square: "\f105";*/

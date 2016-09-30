@@ -43,7 +43,7 @@ P {
 @media (min-width: @screen-sm-min) {
     .navbar-nav > li {
         &:hover, &:active {
-            border-top: solid #CC6666;
+            border-top: solid @pink;
 
             > a {
                 padding-top: @navbar-padding-vertical - 3;
@@ -74,84 +74,99 @@ P {
     background-color: transparent;
 }
 
+.carousel-indicators .img-circle {
+    display: inline-block;
+    width: 90px;
+    max-width: 90px;
+    height: 90px;
+    max-height: 90px;
+    border: 2px solid @orange;
+    background-color: @marengo;
+    margin: 0px 20px;
+    padding-top: 10px;
+    a {
+        max-width: 80px;
+    }
+}
+
 .text-calling {
     color: @carousel-caption-color;
     text-align: center;
     text-shadow: @carousel-text-shadow;
 }
 
-/*.backdrop {
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}*/
-
-.step1 {
-    //background-color: @gray-lighter;
+.step1 {    
     background: url("../../../images/bg/bg1.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    box-shadow: inset 0px 0px 3000px rgba(0, 0, 0, 0.8);
+    //box-shadow: inset 0px 0px 3000px rgba(0, 0, 0, 0.8);
 }
 
 .step2 {
+    background: url("../../../images/bg/bg8.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    //box-shadow: inset 0px 0px 3000px rgba(0, 0, 0, 0.8);
+}
+
+.step3 {
     background: url("../../../images/bg/bg2.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    box-shadow: inset 0px 0px 3000px rgba(0, 0, 0, 0.8);
+    //box-shadow: inset 0px 0px 3000px rgba(0, 0, 0, 0.8);
+    
+    #equal {padding-bottom: 28px;}
 }
 
-.step3 {
-    background: url("../../../images/bg/bg6.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    box-shadow: inset 0px 0px 3000px rgba(0, 0, 0, 0.8);
+.fs10 {
+    font-size: 10px;
 }
 
-.step4 {
-    background: url("../../../images/bg/bg4.jpg") no-repeat center center fixed;
+.fs20 {
+    font-size: 20px;
 }
 
-/*.q {
-    height: 20px;
-    max-height: 20px;
-    width: 100%;
-    position: relative;
-    background: url("../../../images/4.png") repeat-x;
-}*/
+.fs30 {
+    font-size: 30px;
+}
+
+.fs40 {
+    font-size: 40px;
+}
 
 .fs50 {
     font-size: 50px;
-    color: white;
 }
 
-.plotter {
-    background: url("/images/icons/svg/drawing.svg") no-repeat center center scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    height: 260px;
-    padding-top: 100px;
+.fs60 {
+    font-size: 60px;
+}
 
-    @media (max-width: @screen-xs-max) {
-        background: url("/images/icons/svg/plotter.svg") no-repeat center center scroll;
-        -webkit-background-size: contain;
-        -moz-background-size: contain;
-        -o-background-size: contain;
-        background-size: contain;
-    }
+.fs70 {
+    font-size: 70px;
+}
+
+.fs80 {
+    font-size: 80px;
+}
+
+.fs90 {
+    font-size: 90px;
+}
+
+.fs100 {
+    font-size: 100px;
 }
 
 .affix {
     top: 60px;
+    width: 285px;
 }/*
 
 #spyproducts, #spyservices {
@@ -170,8 +185,15 @@ P {
 }
 
 .carousel-inner {
-    .jumbotron h1 {
-        font-size: 40px;
+    .jumbotron {
+        h1 {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            font-size: 21px;
+        }        
     }
     .thumbnail {
         background-color: transparent;
@@ -187,7 +209,7 @@ P {
         & + p {
             font-size: 16px;
             margin: 0px 7px 10px;
-        }
+        }        
     }
 
     #first {
@@ -195,10 +217,56 @@ P {
     }
 
     #second {
-        border-color: #00B9B9;
+        border-color: #33FF66;//#00B9B9;
     }
 
     #third {
-        border-color: #3295EA;
+        border-color: #00CCFF; //#3295EA;
     }
+}
+
+#limit_chzn {
+    min-width: 60px;
+}
+
+.text-lending {
+    padding-top: 20px;
+}
+
+.indicators-bg {
+    width: 63%;
+/*    @defWidth: `Math.max(document.documentElement.clientWidth, window.innerWidth || 0)`;
+    max-width: @defWidth / 2 + 85;*/
+    bottom: 40px;
+    height: 50px;
+    position: absolute;
+    z-index: 15;
+    background-color: @marengo;
+    border: 2px solid @orange;
+    border-left: none;
+    //background: url("../../../images/icons/png/high-speed-train.png") no-repeat center center fixed;
+    //background-size: contain;
+
+    p {
+        font-size: 30px;
+        color: @carousel-caption-color;
+        text-shadow: @carousel-text-shadow;
+        margin-left: 40px;
+    }
+}
+
+.main-page-arrow {
+    @media (max-width: @screen-xs-max) {
+        margin: 15px 0px;
+    }
+    
+    @media (min-width: @screen-sm-min) {
+        margin: 70px 0px;
+    }    
+}
+
+.main-page-smile {
+    width: 80px;
+    height: 80px;
+    margin: 20px 0px;
 }

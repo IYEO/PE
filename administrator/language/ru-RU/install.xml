@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="3.5" client="administrator" type="language" method="upgrade">
+<extension version="3.6" client="administrator" type="language" method="upgrade">
 	<name>Русский (Россия)</name>
 	<tag>ru-RU</tag>
-	<version>3.5.0.6</version>
-	<creationDate>2016-04-01</creationDate>
+	<version>3.6.2.2</version>
+	<creationDate>2016-09-04</creationDate>
 	<author>Russian Translation Team</author>
 	<authorEmail>smart@joomlaportal.ru</authorEmail>
 	<authorUrl>www.joomlaportal.ru</authorUrl>
 	<copyright>Copyright (C) 2005 - 2016 Open Source Matters. All rights reserved.</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<description>Russian language pack (administrator) for Joomla! 3.5.0</description>
+	<description>Russian language pack (administrator) for Joomla! 3.6.2</description>
 	<files>
 		<filename>index.html</filename>
 		<filename>ru-RU.com_admin.ini</filename>
@@ -162,6 +162,12 @@
 		<filename>ru-RU.plg_finder_tags.sys.ini</filename>
 		<filename>ru-RU.plg_finder_weblinks.ini</filename>
 		<filename>ru-RU.plg_finder_weblinks.sys.ini</filename>
+		<filename>ru-RU.plg_installer_folderinstaller.ini</filename>
+		<filename>ru-RU.plg_installer_folderinstaller.sys.ini</filename>
+		<filename>ru-RU.plg_installer_packageinstaller.ini</filename>
+		<filename>ru-RU.plg_installer_packageinstaller.sys.ini</filename>
+		<filename>ru-RU.plg_installer_urlinstaller.ini</filename>
+		<filename>ru-RU.plg_installer_urlinstaller.sys.ini</filename>
 		<filename>ru-RU.plg_installer_webinstaller.ini</filename>
 		<filename>ru-RU.plg_installer_webinstaller.sys.ini</filename>
 		<filename>ru-RU.plg_quickicon_extensionupdate.ini</filename>
@@ -223,6 +229,7 @@
 		<filename file="meta">install.xml</filename>
 		<filename file="meta">ru-RU.xml</filename>
 	</files>
+
 
 	<params />
 </extension>

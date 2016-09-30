@@ -204,26 +204,15 @@
     background-color: #000 \9; // IE8
     background-color: rgba(0,0,0,0); // IE9
   }
-  a {
-    width: 150px;
+  a {    
     color: @gray-lighter;
     display: inline-block;
     cursor: pointer;
     transition: all 0.8s ease 0s;    
 
-    img {
-        width: 60px;
-        transition: all 0.8s ease 0s;
-    }
-
     &:hover,
     &:focus {
-      color: @orange;
-
-      img {
-        transform: scale(1.1);
-        color: @gray-base;
-      }
+      color: @orange;      
     }
 
     // IE8-9 hack for event handling
@@ -237,6 +226,10 @@
     // set alpha transparency for the best results possible.
 /*    background-color: #000 \9; // IE8
     background-color: rgba(0,0,0,0); // IE9*/
+  }
+  
+  .active {
+      color: @orange;
   }
 /*  .active {
       color: @orange;

@@ -21,7 +21,7 @@ class JConfig {
 	public $secret = 'vx3qy7bq1SsT9Ujw';
 	public $gzip = '1';
 	public $error_reporting = 'development';
-	public $helpurl = 'https://help.joomla.org/proxy/index.php?option=com_help&keyref=Help{major}{minor}:{keyref}';
+	public $helpurl = 'https://help.joomla.org/proxy/index.php?keyref=Help{major}{minor}:{keyref}';
 	public $ftp_host = '';
 	public $ftp_port = '';
 	public $ftp_user = '';
