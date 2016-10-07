@@ -72,7 +72,7 @@ $modules  = JModuleHelper::getModules("scrollspy");
     <div class="row">
         <?php
         if (!empty($modules)) : ?>
-            <div class="hidden-print hidden-xs hidden-sm col-md-4 col-lg-3">
+            <div class="hidden-print hidden-xs hidden-sm col-md-3 col-lg-3">
                 <?php
                 $attribs  = array();
                 $attribs['style'] = 'xhtml';
@@ -82,7 +82,7 @@ $modules  = JModuleHelper::getModules("scrollspy");
                 }
                 ?>
             </div>
-            <div class="col-xs-12 col-md-8 col-lg-9">
+            <div class="col-xs-12 col-md-9 col-lg-9">
             <div class="row">
         <?php endif; ?>
                 <?php $leadingcount = 0; ?>

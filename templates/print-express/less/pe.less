@@ -29,7 +29,7 @@ P {
 }
 
 .logosvg {
-    background: url("../../../images/logosvg.svg");
+    background: url("../../../uploaded/images/logosvg.svg");
     display: block;
     //text-indent: -9999px;
     width: 800px;
@@ -95,8 +95,8 @@ P {
     text-shadow: @carousel-text-shadow;
 }
 
-.step1 {    
-    background: url("../../../images/bg/bg1.jpg") no-repeat center center fixed;
+.step1 {
+    background: url("../../../uploaded/images/bg/bg1.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -105,7 +105,7 @@ P {
 }
 
 .step2 {
-    background: url("../../../images/bg/bg8.jpg") no-repeat center center fixed;
+    background: url("../../../uploaded/images/bg/bg8.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -114,13 +114,13 @@ P {
 }
 
 .step3 {
-    background: url("../../../images/bg/bg2.jpg") no-repeat center center fixed;
+    background: url("../../../uploaded/images/bg/bg2.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     //box-shadow: inset 0px 0px 3000px rgba(0, 0, 0, 0.8);
-    
+
     #equal {padding-bottom: 28px;}
 }
 
@@ -166,7 +166,19 @@ P {
 
 .affix {
     top: 60px;
-    width: 285px;
+    
+    //Ширина боковой суб-навигации в зависимости от размера экрана:
+    @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {    //Small devices
+        width: 227px;
+    }
+    
+    @media (min-width: @screen-md-min) and (max-width: @screen-md-max) {    //Medium devices
+        width: 226px;
+    }
+
+    @media (min-width: @screen-lg-min) {    //Large devices Desktops (≥1200px)
+        width: 286px;
+    }
 }/*
 
 #spyproducts, #spyservices {
@@ -193,7 +205,7 @@ P {
 
         li {
             font-size: 21px;
-        }        
+        }
     }
     .thumbnail {
         background-color: transparent;
@@ -209,7 +221,7 @@ P {
         & + p {
             font-size: 16px;
             margin: 0px 7px 10px;
-        }        
+        }
     }
 
     #first {
@@ -259,14 +271,23 @@ P {
     @media (max-width: @screen-xs-max) {
         margin: 15px 0px;
     }
-    
+
     @media (min-width: @screen-sm-min) {
         margin: 70px 0px;
-    }    
+    }
 }
 
 .main-page-smile {
     width: 80px;
     height: 80px;
     margin: 20px 0px;
+}
+
+.marengo {background-color: RGBA(76, 88, 102, 0.6)}
+
+#spyproducts, #spyservices, #spyrecommendations {
+    font-size: @font-size-small;
+        a {
+            padding: 5px 0px;
+        }
 }

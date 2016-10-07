@@ -5425,7 +5425,7 @@ button.list-group-item-danger.active:focus {
 }
 .panel {
   margin-bottom: 20px;
-  background-color: rgba(76, 88, 102, 0.6);
+  background-color: #ffffff;
   border: 1px solid transparent;
   border-radius: 4px;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
@@ -6779,7 +6779,7 @@ P {
   height: 100%;
 }
 .logosvg {
-  background: url("../../../images/logosvg.svg");
+  background: url("../../../uploaded/images/logosvg.svg");
   display: block;
   width: 800px;
   height: 800px;
@@ -6840,21 +6840,21 @@ P {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
 }
 .step1 {
-  background: url("../../../images/bg/bg1.jpg") no-repeat center center fixed;
+  background: url("../../../uploaded/images/bg/bg1.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
 .step2 {
-  background: url("../../../images/bg/bg8.jpg") no-repeat center center fixed;
+  background: url("../../../uploaded/images/bg/bg8.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
 .step3 {
-  background: url("../../../images/bg/bg2.jpg") no-repeat center center fixed;
+  background: url("../../../uploaded/images/bg/bg2.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -6895,7 +6895,21 @@ P {
 }
 .affix {
   top: 60px;
-  width: 285px;
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .affix {
+    width: 227px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .affix {
+    width: 226px;
+  }
+}
+@media (min-width: 1200px) {
+  .affix {
+    width: 286px;
+  }
 }
 /*
 
@@ -6981,6 +6995,19 @@ P {
   height: 80px;
   margin: 20px 0px;
 }
+.marengo {
+  background-color: rgba(76, 88, 102, 0.6);
+}
+#spyproducts,
+#spyservices,
+#spyrecommendations {
+  font-size: 12px;
+}
+#spyproducts a,
+#spyservices a,
+#spyrecommendations a {
+  padding: 5px 0px;
+}
 /*
     Flaticon icon font: Flaticon
     Creation date: 29/09/2016 14:11
@@ -7021,15 +7048,27 @@ P {
 .flaticon-delivery-truck:before {
   content: "\f102";
 }
-.flaticon-emoticon-square-smiling-face-with-closed-eyes:before {
+.flaticon-doc-file-format:before {
   content: "\f103";
 }
-.flaticon-meeting:before {
+.flaticon-emoticon-square-smiling-face-with-closed-eyes:before {
   content: "\f104";
 }
-.flaticon-square:before {
+.flaticon-meeting:before {
   content: "\f105";
 }
+.flaticon-pdf-file-format-symbol:before {
+  content: "\f106";
+}
+.flaticon-square:before {
+  content: "\f107";
+}
+/*.flaticon-cup       { &:before { content: "\f100"; } }
+.flaticon-daily-wall-calendar-on-day-3-page:before { content: "\f101"; }
+.flaticon-delivery-truck:before { content: "\f102"; }
+.flaticon-emoticon-square-smiling-face-with-closed-eyes:before { content: "\f103"; }
+.flaticon-meeting:before { content: "\f104"; }
+.flaticon-square:before { content: "\f105"; }*/
 /*    $font-Flaticon-cup: "\f100";
     $font-Flaticon-daily-wall-calendar-on-day-3-page: "\f101";
     $font-Flaticon-delivery-truck: "\f102";
