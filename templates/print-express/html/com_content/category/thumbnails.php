@@ -136,17 +136,17 @@ $modules  = JModuleHelper::getModules("scrollspy");
                                             <?php echo $this->escape($child->title); ?></a>
                                         </h2>
                                         <?php else : ?>
-                                        <span id="<?php echo $this->escape($child->alias); ?>"></span>
-                                        <h2 class="page-header item-title"><a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($child->id));?>">
-                                            <?php echo $this->escape($child->title); ?></a>
-                                            <?php if ( $this->params->get('show_cat_num_articles', 1)) : ?>
-                                                <span class="badge badge-info tip hasTooltip" title="<?php echo JHtml::tooltipText('COM_CONTENT_NUM_ITEMS'); ?>">
-                                                    <?php echo JText::_('COM_CONTENT_NUM_ITEMS'); ?>&nbsp;
-                                                    <?php echo $child->getNumItems(true); ?>
-                                                </span>
+                                                <span id="<?php echo $this->escape($child->alias); ?>"></span>
+                                                <h2 class="page-header item-title"><a href="<?php echo JRoute::_(ContentHelperRoute::getCategoryRoute($child->id));?>">
+                                                    <?php echo $this->escape($child->title); ?></a>
+                                                    <?php if ( $this->params->get('show_cat_num_articles', 1)) : ?>
+                                                        <span class="badge badge-info tip hasTooltip" title="<?php echo JHtml::tooltipText('COM_CONTENT_NUM_ITEMS'); ?>">
+                                                            <?php echo JText::_('COM_CONTENT_NUM_ITEMS'); ?>&nbsp;
+                                                            <?php echo $child->getNumItems(true); ?>
+                                                        </span>
+                                                    <?php endif; ?>
+                                                </h2>
                                             <?php endif; ?>
-                                        </h2>
-                                        <?php endif;?>
                                 </div>
                             <?php endif; ?>
 
