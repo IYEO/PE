@@ -21,7 +21,7 @@ class JConfig {
 	public $secret = 'vx3qy7bq1SsT9Ujw';
 	public $gzip = '1';
 	public $error_reporting = 'development';
-	public $helpurl = 'https://help.joomla.org/proxy/index.php?keyref=Help{major}{minor}:{keyref}';
+	public $helpurl = 'https://help.joomla.org/proxy?keyref=Help{major}{minor}:{keyref}&lang={langcode}';
 	public $ftp_host = '';
 	public $ftp_port = '';
 	public $ftp_user = '';
@@ -30,9 +30,9 @@ class JConfig {
 	public $ftp_enable = '0';
 	public $offset = 'Europe/Moscow';
 	public $mailer = 'mail';
-	public $mailfrom = 'admin@print-express99.ru';
+	public $mailfrom = 'admin@localhost';
 	public $fromname = 'ООО "Принт-Экспресс"';
-	public $sendmail = '/usr/sbin/sendmail';
+	public $sendmail = 'D:/Work/WWW/XAMPP/sendmail';
 	public $smtpauth = '0';
 	public $smtpuser = '';
 	public $smtppass = '';

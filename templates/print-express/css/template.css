@@ -6413,6 +6413,7 @@ button.close {
 }
 .carousel-indicators .active {
   color: #ff9933;
+  background-color: #ffffff;
 }
 .carousel-caption {
   position: absolute;
@@ -6762,7 +6763,9 @@ and open the template in the editor.
     Author     : YEO
 */
 html {
+  position: relative;
   width: 100%;
+  min-width: 100%;
   height: 100%;
 }
 body {
@@ -6923,7 +6926,7 @@ P {
   transition: all 0.5s ease 0s;
 }
 .thumbnail div[class*=item-image] img:hover {
-  transform: scale(1.2);
+  transform: scale(1.13);
 }
 .carousel-inner .jumbotron h1 {
   font-size: 30px;
@@ -6965,7 +6968,7 @@ P {
 .indicators-bg {
   width: 63%;
   /*    @defWidth: `Math.max(document.documentElement.clientWidth, window.innerWidth || 0)`;
-    max-width: @defWidth / 2 + 85;*/
+        max-width: @defWidth / 2 + 85;*/
   bottom: 40px;
   height: 50px;
   position: absolute;
@@ -7006,7 +7009,86 @@ P {
 #spyproducts a,
 #spyservices a,
 #spyrecommendations a {
-  padding: 5px 0px;
+  padding: 5px 10px;
+}
+.offset-print {
+  transition: all 0.6s ease 0s;
+  height: 400px;
+  background: url("../../../uploaded/images/bg/lithrone 28.jpg") no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.offset-print h2 {
+  background-color: #eeeeee;
+  height: 80px;
+  width: 100%;
+  margin-top: 300px;
+  padding: 25px;
+  border-top: 5px solid;
+}
+@media screen and (max-width: 767px) {
+  .offset-print h2 {
+    font-size: 18px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) and (orientation: portrait) {
+  .offset-print h2 {
+    font-size: 20px;
+  }
+}
+.flexo-print {
+  transition: all 0.6s ease 0s;
+  height: 400px;
+  background: url("../../../uploaded/images/bg/fleksografia.jpg") no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.flexo-print h2 {
+  background-color: #eeeeee;
+  height: 80px;
+  width: 100%;
+  margin-top: 300px;
+  padding: 25px;
+  border-top: 5px solid;
+}
+@media screen and (max-width: 767px) {
+  .flexo-print h2 {
+    font-size: 18px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) and (orientation: portrait) {
+  .flexo-print h2 {
+    font-size: 20px;
+  }
+}
+.recomm {
+  margin-bottom: 20px;
+}
+#YaMap {
+  width: 100%;
+  height: 500px;
+}
+@media screen and (max-width: 767px) {
+  #YaMap {
+    height: 300px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .contacts address {
+    margin-bottom: 0px;
+    line-height: 2;
+  }
+}
+.footer {
+  position: absolute;
+  bottom: 0px;
+  height: 60px;
+  width: 100%;
+  background-color: #4c5866;
 }
 /*
     Flaticon icon font: Flaticon

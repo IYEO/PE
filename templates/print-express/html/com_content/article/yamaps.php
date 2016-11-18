@@ -1,0 +1,239 @@
+<?php
+/**
+ * @package     Joomla.Site
+ * @subpackage  com_content
+ *
+ * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+defined('_JEXEC') or die;
+
+JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
+$document = JFactory::getDocument();
+$document->addScript('https://api-maps.yandex.ru/2.1/?lang=ru-RU');
+$document->addScriptDeclaration('
+    // Как только будет загружен API и готов DOM, выполняем инициализацию
+    ymaps.ready(function () {
+        var myMap = new ymaps.Map("YaMap", {
+            center: [54.783074, 32.045],
+            zoom: 12
+        });
+        myMap.behaviors.disable(\'scrollZoom\');
+        // При создании метки указываем ее свойства:  текст для отображения в иконке и содержимое балуна,
+        // который откроется при нажатии на эту метку
+
+        //Принт-Экспресс:
+        PrintExpress = new ymaps.Placemark([54.76948103, 32.04727749], {
+            // Свойства
+            iconContent: \'Принт-Экспресс\',
+            balloonContentHeader: \'Типография \"Принт-Экспресс\"\',
+            balloonContentBody: \'<span class="glyphicon glyphicon-map-marker"></span> проспект Гагарина, д.21, оф.33.<br/><span class="glyphicon glyphicon-earphone"></span> (4812) 32-80-70, 62-88-85, 32-71-54,<br/>68-34-70.<br><span class="glyphicon glyphicon-phone"></span> +7 (920) 665-01-84.\'
+        }, {
+            // Опции
+            preset: \'islands#darkBlueStretchyIcon\' // иконка растягивается под контент
+        }),
+
+        //Призма:
+        Prizma = new ymaps.Placemark([54.79487718, 32.04649242], {
+            // Свойства
+            iconContent: \'Призма\',
+            balloonContentHeader: \'Печатный салон \"Призма\"\',
+            balloonContentBody: \'<span class="glyphicon glyphicon-map-marker"></span> ул.Кашена, д.1, 2 этаж, оф. 212.<br/><span class="glyphicon glyphicon-earphone"></span> (4812) 410-616.<br><span class="glyphicon glyphicon-phone"></span> +7 (920) 329-20-70.\'            
+        }, {
+            // Опции
+            preset: \'islands#darkBlueStretchyIcon\' // иконка растягивается под контент
+        }),
+
+        //Позитив:
+        Positive = new ymaps.Placemark([54.77028373, 32.02394643], {
+            // Свойства
+            iconContent: \'Позитив\',
+            balloonContentHeader: \'Печатный салон \"Позитив\"\',
+            balloonContentBody: \'<span class="glyphicon glyphicon-map-marker"></span> ул.Кирова, д.1.<br/><span class="glyphicon glyphicon-earphone"></span> (4812) 655-909.<br><span class="glyphicon glyphicon-phone"></span> +7 (920) 669-89-25.\'
+        }, {
+            // Опции
+            preset: \'islands#darkBlueStretchyIcon\' // иконка растягивается под контент
+        });
+
+        // Добавляем метки на карту
+        myMap.geoObjects
+            .add(PrintExpress)
+            .add(Prizma)
+            .add(Positive);
+    });
+');
+
+// Create shortcuts to some parameters.
+$params = $this->item->params;
+$images = json_decode($this->item->images);
+$urls = json_decode($this->item->urls);
+$canEdit = $params->get('access-edit');
+$user = JFactory::getUser();
+$info = $params->get('info_block_position', 0);
+
+if (JModuleHelper::isEnabled("custom")) :   //проверяем ПОЛЬЗОВАТЕЛЬСКИЙ модуль по имени custom
+    // Добавляем data-атрибуты, чтобы корректно работало боковое меню
+    JFactory::getDocument()->addScriptDeclaration('
+        jQuery(window).ready(function () {
+            jQuery(\'body\').attr(\'data-spy\', \'scroll\').attr(\'data-target\', \'#spyrecommendations\');
+        });');
+endif;
+?>
+<div class="item-page<?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Article">
+    <meta itemprop="inLanguage" content="<?php echo ($this->item->language === '*') ? JFactory::getConfig()->get('language') : $this->item->language; ?>" />
+    <?php if ($this->params->get('show_page_heading')) : ?>
+        <div class="page-header">
+            <h1> <?php echo $this->escape($this->params->get('page_heading')); ?> </h1>
+        </div>
+        <?php
+    endif;
+    if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->paginationposition && $this->item->paginationrelative) {
+        echo $this->item->pagination;
+    }
+    ?>
+
+    <?php // Todo Not that elegant would be nice to group the params ?>
+    <?php $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_date') || $params->get('show_create_date') || $params->get('show_hits') || $params->get('show_category') || $params->get('show_parent_category') || $params->get('show_author') );
+    ?>
+
+    <?php if (!$useDefList && $this->print) : ?>
+        <div id="pop-print" class="btn hidden-print">
+            <?php echo JHtml::_('icon.print_screen', $this->item, $params); ?>
+        </div>
+        <div class="clearfix"> </div>
+    <?php endif; ?>
+    <?php if ($params->get('show_title') || $params->get('show_author')) : ?>
+        <div class="page-header">
+            <?php if ($params->get('show_title')) : ?>
+                <h2 itemprop="name">
+                    <?php echo $this->escape($this->item->title); ?>
+                </h2>
+            <?php endif; ?>
+            <?php if ($this->item->state == 0) : ?>
+                <span class="label label-warning"><?php echo JText::_('JUNPUBLISHED'); ?></span>
+            <?php endif; ?>
+            <?php if (strtotime($this->item->publish_up) > strtotime(JFactory::getDate())) : ?>
+                <span class="label label-warning"><?php echo JText::_('JNOTPUBLISHEDYET'); ?></span>
+            <?php endif; ?>
+            <?php if ((strtotime($this->item->publish_down) < strtotime(JFactory::getDate())) && $this->item->publish_down != JFactory::getDbo()->getNullDate()) : ?>
+                <span class="label label-warning"><?php echo JText::_('JEXPIRED'); ?></span>
+            <?php endif; ?>
+        </div>
+    <?php endif; ?>
+    <?php if (!$this->print) : ?>
+        <?php if ($canEdit || $params->get('show_print_icon') || $params->get('show_email_icon')) : ?>
+            <?php echo JLayoutHelper::render('joomla.content.icons', array('params' => $params, 'item' => $this->item, 'print' => false)); ?>
+        <?php endif; ?>
+    <?php else : ?>
+        <?php if ($useDefList) : ?>
+            <div id="pop-print" class="btn hidden-print">
+                <?php echo JHtml::_('icon.print_screen', $this->item, $params); ?>
+            </div>
+        <?php endif; ?>
+    <?php endif; ?>
+
+    <?php if ($useDefList && ($info == 0 || $info == 2)) : ?>
+        <?php echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'above')); ?>
+    <?php endif; ?>
+
+    <?php if ($info == 0 && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) : ?>
+        <?php $this->item->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
+
+        <?php echo $this->item->tagLayout->render($this->item->tags->itemTags); ?>
+    <?php endif; ?>
+
+    <?php // Content is generated by content plugin event "onContentAfterTitle" ?>
+    <?php if (!$params->get('show_intro')) : echo $this->item->event->afterDisplayTitle;
+    endif;
+    ?>
+    <?php // Content is generated by content plugin event "onContentBeforeDisplay" ?>
+    <?php echo $this->item->event->beforeDisplayContent; ?>
+
+    <?php if (isset($urls) && ((!empty($urls->urls_position) && ($urls->urls_position == '0')) || ($params->get('urls_position') == '0' && empty($urls->urls_position))) || (empty($urls->urls_position) && (!$params->get('urls_position')))) :
+        ?>
+        <?php echo $this->loadTemplate('links'); ?>
+    <?php endif; ?>
+    <?php if ($params->get('access-view')): ?>
+        <?php
+        if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->paginationposition && !$this->item->paginationrelative):
+            echo $this->item->pagination;
+        endif;
+        ?>
+        <?php
+        if (isset($this->item->toc)) :
+            echo $this->item->toc;
+        endif;
+        ?>
+        <div itemprop="articleBody">
+        <?php echo $this->item->text; ?>
+        </div>
+        <?php if (isset($images->image_fulltext) && !empty($images->image_fulltext)) : ?>
+                <?php $imgfloat = (empty($images->float_fulltext)) ? $params->get('float_fulltext') : $images->float_fulltext; ?>
+            <div class="pull-<?php echo htmlspecialchars($imgfloat); ?> item-image"> <img
+                <?php
+                if ($images->image_fulltext_caption):
+                    echo 'class="caption img-responsive"' . ' title="' . htmlspecialchars($images->image_fulltext_caption) . '"';
+                endif;
+                ?>
+                    src="<?php echo htmlspecialchars($images->image_fulltext); ?>" alt="<?php echo htmlspecialchars($images->image_fulltext_alt); ?>" itemprop="image" class="img-responsive"/> </div>
+        <?php endif; ?>
+
+        <?php if ($info == 1 || $info == 2) : ?>
+            <?php if ($useDefList) : ?>
+                <?php echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'below')); ?>
+            <?php endif; ?>
+            <?php if ($params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) : ?>
+                <?php $this->item->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
+                <?php echo $this->item->tagLayout->render($this->item->tags->itemTags); ?>
+            <?php endif; ?>
+        <?php endif; ?>
+
+        <?php
+        if (!empty($this->item->pagination) && $this->item->pagination && $this->item->paginationposition && !$this->item->paginationrelative):
+            echo $this->item->pagination;
+            ?>
+        <?php endif; ?>
+        <?php if (isset($urls) && ((!empty($urls->urls_position) && ($urls->urls_position == '1')) || ($params->get('urls_position') == '1'))) : ?>
+            <?php echo $this->loadTemplate('links'); ?>
+        <?php endif; ?>
+        <?php // Optional teaser intro text for guests ?>
+    <?php elseif ($params->get('show_noauth') == true && $user->get('guest')) : ?>
+        <?php echo JLayoutHelper::render('joomla.content.intro_image', $this->item); ?>
+        <?php echo JHtml::_('content.prepare', $this->item->introtext); ?>
+        <?php // Optional link to let them register to see the whole article. ?>
+        <?php if ($params->get('show_readmore') && $this->item->fulltext != null) : ?>
+            <?php $menu = JFactory::getApplication()->getMenu(); ?>
+            <?php $active = $menu->getActive(); ?>
+            <?php $itemId = $active->id; ?>
+            <?php $link = new JUri(JRoute::_('index.php?option=com_users&view=login&Itemid=' . $itemId, false)); ?>
+        <?php $link->setVar('return', base64_encode(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid, $this->item->language))); ?>
+            <p class="readmore">
+                <a href="<?php echo $link; ?>" class="register">
+                    <?php $attribs = json_decode($this->item->attribs); ?>
+                    <?php
+                    if ($attribs->alternative_readmore == null) :
+                        echo JText::_('COM_CONTENT_REGISTER_TO_READ_MORE');
+                    elseif ($readmore = $this->item->alternative_readmore) :
+                        echo $readmore;
+                        if ($params->get('show_readmore_title', 0) != 0) :
+                            echo JHtml::_('string.truncate', ($this->item->title), $params->get('readmore_limit'));
+                        endif;
+                    elseif ($params->get('show_readmore_title', 0) == 0) :
+                        echo JText::sprintf('COM_CONTENT_READ_MORE_TITLE');
+                    else :
+                        echo JText::_('COM_CONTENT_READ_MORE');
+                        echo JHtml::_('string.truncate', ($this->item->title), $params->get('readmore_limit'));
+                    endif;
+                    ?>
+                </a>
+            </p>
+        <?php endif; ?>
+    <?php endif; ?>
+    <?php
+    if (!empty($this->item->pagination) && $this->item->pagination && $this->item->paginationposition && $this->item->paginationrelative) :
+        echo $this->item->pagination;
+        ?>
+    <?php endif; ?>
+    <?php // Content is generated by content plugin event "onContentAfterDisplay"  ?>
+<?php echo $this->item->event->afterDisplayContent; ?>
+</div>

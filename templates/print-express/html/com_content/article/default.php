@@ -100,15 +100,7 @@ endif;
 		|| (empty($urls->urls_position) && (!$params->get('urls_position')))) : ?>
 	<?php echo $this->loadTemplate('links'); ?>
 	<?php endif; ?>
-	<?php if ($params->get('access-view')):?>
-	<?php if (isset($images->image_fulltext) && !empty($images->image_fulltext)) : ?>
-	<?php $imgfloat = (empty($images->float_fulltext)) ? $params->get('float_fulltext') : $images->float_fulltext; ?>
-	<div class="pull-<?php echo htmlspecialchars($imgfloat); ?> item-image"> <img
-	<?php if ($images->image_fulltext_caption):
-		echo 'class="caption"' . ' title="' . htmlspecialchars($images->image_fulltext_caption) . '"';
-	endif; ?>
-	src="<?php echo htmlspecialchars($images->image_fulltext); ?>" alt="<?php echo htmlspecialchars($images->image_fulltext_alt); ?>" itemprop="image"/> </div>
-	<?php endif; ?>
+	<?php if ($params->get('access-view')):?>	
 	<?php
 	if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->paginationposition && !$this->item->paginationrelative):
 		echo $this->item->pagination;
@@ -120,6 +112,14 @@ endif;
 	<div itemprop="articleBody">
 		<?php echo $this->item->text; ?>
 	</div>
+        <?php if (isset($images->image_fulltext) && !empty($images->image_fulltext)) : ?>
+	<?php $imgfloat = (empty($images->float_fulltext)) ? $params->get('float_fulltext') : $images->float_fulltext; ?>
+	<div class="pull-<?php echo htmlspecialchars($imgfloat); ?> item-image"> <img
+	<?php if ($images->image_fulltext_caption):
+		echo 'class="caption img-responsive"' . ' title="' . htmlspecialchars($images->image_fulltext_caption) . '"';
+	endif; ?>
+	src="<?php echo htmlspecialchars($images->image_fulltext); ?>" alt="<?php echo htmlspecialchars($images->image_fulltext_alt); ?>" itemprop="image" class="img-responsive"/> </div>
+	<?php endif; ?>
 
 	<?php if ($info == 1 || $info == 2) : ?>
 		<?php if ($useDefList) : ?>

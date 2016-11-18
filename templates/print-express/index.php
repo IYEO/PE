@@ -16,18 +16,6 @@ if($this->countModules('search')) :    //если отображается мо�
         jQuery(document).ready(function () {
             jQuery(\'a.search\').attr(\'data-toggle\', \'collapse\');
         });');
-
-//    JFactory::getDocument()->addScriptDeclaration('
-//        jQuery(document).ready(function(){
-//            jQuery("a.search").click(function(){
-//                jQuery("#search").collapse(\'toggle\');
-//            });
-//        });
-//        ');
-//JFactory::getDocument()->addScriptDeclaration('
-//    jQuery(\'#spyproducts\').on(\'affix.bs.affix\', function() {
-//       jQuery(\'.affix\').toggleClass(\'col-md-4 col-lg-3\');
-//    });');
 endif;
 ?>
 
