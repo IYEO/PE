@@ -13,6 +13,9 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 
 JHtml::_('behavior.caption');
 
+JHtml::stylesheet('template.css', array(), TRUE);   //add Bootstrap stylesheet (v.3.3.6)
+JHtml::stylesheet('../../../css/home.css', array(), TRUE);  //Стиль для главной страницы сайта
+
 // If the page class is defined, add to class as suffix.
 // It will be a separate class if the user starts it with a space
 ?>
@@ -21,14 +24,14 @@ JHtml::_('behavior.caption');
 <div class="page-header">
 	<h1>
 	<?php echo $this->escape($this->params->get('page_heading')); ?>
-	</h1>    
+	</h1>
 </div>
 <?php endif; ?>
 <?php $leadingcount = 0; ?>
 <?php if (!empty($this->lead_items)) : ?>
 <div class="items-leading clearfix fill">
 	<?php foreach ($this->lead_items as &$item) : ?>
-		<div class="leading-<?php echo $leadingcount; ?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?> clearfix fill" 
+		<div class="leading-<?php echo $leadingcount; ?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?> clearfix fill"
 			itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
 			<?php
 				$this->item = &$item;

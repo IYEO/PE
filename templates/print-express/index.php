@@ -59,7 +59,9 @@ endif;
         <?php
 
 //      Content        ?>
-        <jdoc:include type="message" />
+        <div class="container-fluid">
+            <jdoc:include type="message" />
+        </div>        
 
         <jdoc:include type="modules" name="carousel" style="none" />    <?php  //модуль "Carousel" для показа слайд-шоу ?>
         <jdoc:include type="component" />
