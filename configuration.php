@@ -6,7 +6,7 @@ class JConfig {
 	public $offline_image = '';
 	public $sitename = 'Принт-Экспресс';
 	public $editor = 'codemirror';
-	public $captcha = '0';
+	public $captcha = 'recaptcha';
 	public $list_limit = '100';
 	public $access = '1';
 	public $debug = '0';
@@ -57,7 +57,7 @@ class JConfig {
 	public $tmp_path = 'D:\\Work\\WWW\\XAMPP\\htdocs\\joomla/tmp';
 	public $lifetime = '60';
 	public $session_handler = 'database';
-	public $MetaRights = '© ООО "Принт-Экспресс", 2016';
+	public $MetaRights = '© ООО "Принт-Экспресс", 2017';
 	public $sitename_pagetitles = '0';
 	public $force_ssl = '0';
 	public $feed_email = 'site';

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset>
+        <field
+            name="id"
+            type="hidden"
+        />
+        <field
+            name="recipient"
+            type="email"
+            label="COM_SENDPOST_ADMIN_RECIPIENT"
+            description="COM_SENDPOST_ADMIN_RECIPIENT_DESCRIPTION"
+            size="40"
+            class="inputbox"
+            default=""
+        />
+    </fieldset>
+</form>

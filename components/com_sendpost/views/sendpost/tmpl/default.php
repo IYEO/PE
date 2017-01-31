@@ -6,58 +6,41 @@
  * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
-
 // No direct access to this file
-defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die;
 
+JHtml::_('behavior.keepalive');
+JHtml::_('behavior.formvalidator');
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_sendpost&task=sendpost.send'); ?>" method="post" class="form-validate well">
 
-		<fieldset>
-			<?php foreach ($this->form->getFieldset('sendpost') as $field) : ?>
-				<?php if (!$field->hidden) : ?>
-					<div class="control-group">
-						<div class="control-label">
-							<?php echo $field->label; ?>
-						</div>
-						<div class="controls">
-							<?php echo $field->input; ?>
-						</div>
-					</div>
-				<?php endif; ?>
-			<?php endforeach; ?>
+<div class="sendpost<?php echo $this->pageclass_sfx; ?>">
+    <h1><?php // echo $this->header;   ?></h1>
 
-			<?php if ($this->tfa): ?>
-				<div class="control-group">
-					<div class="control-label">
-						<?php echo $this->form->getField('secretkey')->label; ?>
-					</div>
-					<div class="controls">
-						<?php echo $this->form->getField('secretkey')->input; ?>
-					</div>
-				</div>
-			<?php endif; ?>
+    <form action="<?php echo JRoute::_('index.php?option=com_sendpost&task=sendpost.send'); ?>" method="post" class="form-validate">
+        <fieldset>
+            <?php foreach ($this->form->getFieldset('sendpost') as $field) : ?>
+                <?php if (!$field->hidden) : ?>
+                    <div class="form-group">                        
+                        <?php echo $field->label; ?>
+                        <?php echo $field->input; ?>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            
+            <?php foreach ($this->form->getFieldset('captcha') as $field) : ?>
+                <?php if (!$field->hidden) : ?>
+                    <div class="form-group">                        
+                        <?php echo $field->input; ?>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
 
-			<?php if (JPluginHelper::isEnabled('system', 'remember')) : ?>
-			<div  class="control-group">
-				<div class="control-label"><label><?php echo JText::_('COM_USERS_LOGIN_REMEMBER_ME') ?></label></div>
-				<div class="controls"><input id="remember" type="checkbox" name="remember" class="inputbox" value="yes"/></div>
-			</div>
-			<?php endif; ?>
-
-			<div class="control-group">
-				<div class="controls">
-					<button type="submit" class="btn btn-primary">
-						<?php echo JText::_('JLOGIN'); ?>
-					</button>
-				</div>
-			</div>
-
-			<?php if ($this->params->get('login_redirect_url')) : ?>
-				<input type="hidden" name="return" value="<?php echo base64_encode($this->params->get('login_redirect_url', $this->form->getValue('return'))); ?>" />
-			<?php else : ?>
-				<input type="hidden" name="return" value="<?php echo base64_encode($this->params->get('login_redirect_menuitem', $this->form->getValue('return'))); ?>" />
-			<?php endif; ?>
-			<?php echo JHtml::_('form.token'); ?>
-		</fieldset>
-	</form>
+            <button type="submit" class="btn btn-primary validate">
+                <?php // echo JText::_('JLOGIN'); ?>
+                <?php echo 'Оформить предварительный заказ'; ?>
+            </button>
+            
+            <?php echo JHtml::_('form.token'); ?>
+        </fieldset>
+    </form>
+</div>

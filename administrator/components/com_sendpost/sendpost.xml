@@ -1,50 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="3.6.0" method="upgrade">
 
-	<name>COM_SENDPOST</name>
-	<creationDate>October 2016</creationDate>
-	<author>YEO</author>
-	<authorEmail>admin@print-express99.ru</authorEmail>
-	<authorUrl>http://print-express99.ru/</authorUrl>
-	<copyright>Copyright (C) 1999-2016 Print-Express. All rights reserved.</copyright>
-	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-        <version>0.0.1</version>
-	<description>COM_SENDPOST_DESCRIPTION</description>
+    <name>COM_SENDPOST</name>
+    <creationDate>October 2016</creationDate>
+    <author>YEO</author>
+    <authorEmail>admin@print-express99.ru</authorEmail>
+    <authorUrl>http://print-express99.ru/</authorUrl>
+    <copyright>Copyright (C) 1999-2017 Print-Express. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <version>0.0.1</version>
+    <description>COM_SENDPOST_DESCRIPTION</description>
 
-	<update>
-		<schemas>
-			<schemapath type="mysql">sql/updates/mysql</schemapath>
-		</schemas>
-	</update>
 
-	<files folder="site">
-		<filename>index.html</filename>
-		<filename>sendpost.php</filename>
-		<filename>controller.php</filename>
-		<folder>views</folder>
-	</files>
+    <install>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+        </sql>
+    </install>
 
-        <languages folder="site/language">
-		<language tag="en-GB">en-GB/en-GB.com_sendpost.ini</language>
-                <language tag="ru-RU">ru-RU/ru-RU.com_sendpost.ini</language>
-        </languages>
+    <uninstall>
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+        </sql>
+    </uninstall>
 
-	<administration>
-		<menu link='index.php?option=com_sendpost'>COM_SENDPOST_MENU</menu>
-		<files folder="admin">
-			<filename>index.html</filename>
-			<filename>sendpost.php</filename>
-			<filename>controller.php</filename>
-			<folder>sql</folder>
-			<folder>views</folder>	<!-- views files section -->
-		</files>
+    <update>
+        <schemas>
+            <schemapath type="mysql">sql/updates/mysql</schemapath>
+        </schemas>
+    </update>
 
-                <languages folder="admin/language">
-        		<language tag="en-GB">en-GB/en-GB.com_sendpost.ini</language>
-                        <language tag="en-GB">en-GB/en-GB.com_sendpost.sys.ini</language>
-                        <language tag="ru-RU">ru-RU/ru-RU.com_sendpost.ini</language>
-                        <language tag="ru-RU">ru-RU/ru-RU.com_sendpost.sys.ini</language>
-		</languages>
-	</administration>
+
+    <files folder="site">
+        <filename>controller.php</filename>
+        <filename>index.html</filename>
+        <filename>sendpost.php</filename>
+        <folder>controllers</folder>
+        <folder>language</folder>
+        <folder>models</folder>
+        <folder>views</folder>        
+    </files>
+
+    <administration>
+        <menu link='index.php?option=com_sendpost'>COM_SENDPOST_MENU</menu>
+        <files folder="admin">
+            <filename>controller.php</filename>
+            <filename>index.html</filename>
+            <filename>sendpost.php</filename>
+            <folder>controllers</folder>
+            <folder>language</folder>
+            <folder>models</folder>
+            <folder>sql</folder>
+            <folder>tables</folder>
+            <folder>views</folder>
+        </files>
+    </administration>
 
 </extension>

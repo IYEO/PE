@@ -1430,7 +1430,7 @@ class PHPMailer
         $params = null;
         //This sets the SMTP envelope sender which gets turned into a return-path header by the receiver
         if (!empty($this->Sender)) {
-            $params = sprintf('-f%s', $this->Sender);			
+            $params = sprintf('-f%s', $this->Sender);
         }
         if ($this->Sender != '' and !ini_get('safe_mode')) {
             $old_from = ini_get('sendmail_from');

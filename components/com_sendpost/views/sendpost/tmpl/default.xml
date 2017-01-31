@@ -1,6 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <metadata>
-	<layout title="COM_SENDPOST_SENDPOST_VIEW_DEFAULT_TITLE">
-		<message>COM_SENDPOST_SENDPOST_VIEW_DEFAULT_DESC</message>
-	</layout>
+    <layout title="COM_SENDPOST_SENDPOST_VIEW_DEFAULT_TITLE">
+        <message>COM_SENDPOST_SENDPOST_VIEW_DEFAULT_DESC</message>
+    </layout>
+    <fields name="request" addfieldpath="/administrator/components/com_sendpost/models/fields">
+        <fieldset name="request">
+            <field name="recipient" type="sendpost" label="COM_SENDPOST_SENDPOST_FIELD_RECIPIENT_LABEL" description="COM_SENDPOST_SENDPOST_FIELD_RECIPIENT_DESC" />	
+        </fieldset>
+    </fields>
 </metadata>

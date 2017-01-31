@@ -1,7 +1,7 @@
 ymaps.ready(function () {
     if (!ymaps.panorama.isSupported()) {
         var msg = {
-            danger: ['<h4>Ой! Что-то не так...</h4>Не получилось отобразить те места, где мы находимся. Попробуйте обновить страницу (<kbd>F5</kbd>).']
+            danger: ['<h4>Ой! Что-то не так...</h4>Не удалось отобразить некоторые элементы веб-страницы. Попробуйте её обновить (<kbd>F5</kbd>).']
         };
         return Joomla.renderMessages(msg);
     } else {
@@ -27,7 +27,10 @@ ymaps.ready(function () {
             },
             function (error) {
                 // Если что-то пошло не так, сообщим об этом пользователю.
-                alert(error.message);
+                var msgPE = {
+                    danger: ['Не удалось отобразить местонахождение центрального офиса типографии "Принт-Экспресс".']
+                };
+                Joomla.renderMessages(msgPE);
             }
         );
 
@@ -53,7 +56,10 @@ ymaps.ready(function () {
             },
             function (error) {
                 // Если что-то пошло не так, сообщим об этом пользователю.
-                alert(error.message);
+                var msgPositive = {
+                    danger: ['Не удалось отобразить местонахождение печатного салона "Позитив".']
+                };
+                Joomla.renderMessages(msgPositive);
             }
         );
 
@@ -79,7 +85,10 @@ ymaps.ready(function () {
             },
             function (error) {
                 // Если что-то пошло не так, сообщим об этом пользователю.
-                alert(error.message);
+                var msgPrizma = {
+                    danger: ['Не удалось отобразить местонахождение печатного салона "Призма".']
+                };
+                Joomla.renderMessages(msgPrizma);
             }
         );
     }

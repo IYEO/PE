@@ -25,5 +25,5 @@ class SendPostController extends JControllerLegacy
 	 * @var string
 	 * @since 12.2
 	 */
-	protected $default_view = 'SendPosts';
+	protected $default_view = 'sendposts';
 }
