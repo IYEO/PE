@@ -11,19 +11,9 @@ class SendPostControllerSendPost extends JControllerForm {
     protected $SenderDetails;   //Подробности, которые указал отправитель письма
 
     public function send() {
-        $model = $this->getModel();        
-//        if (!$model->validate($model,$model->get("Form"))) {
-//            return FALSE;
-//        }
-
-        $db = JFactory::getDbo();
-        $query = $db->getQuery(true);
-        $query->select('recipient');
-        $query->from($db->quoteName('#__sendpost_recipient'));        
-
-        // Reset the query using our newly populated query object.
-        $db->setQuery($query);
-        $recipient = $db->loadResult();
+////        if (!$model->validate($model,$model->get("Form"))) {
+////            return FALSE;
+////        }
 
         //Получаем данные, введённые пользователем на сайте:
         $this->SenderName = $this->input->getString(trim('name'));
@@ -33,8 +23,12 @@ class SendPostControllerSendPost extends JControllerForm {
 
         //Создаём письмо для отправки:
         $mailer = JFactory::getMailer();
+
         $sender = array($this->SenderEmail, $this->SenderName);   //Отправитель в формате Имя <Email>
         $mailer->setSender($sender);
+
+        $jinput = JFactory::getApplication()->input;
+        $recipient = $jinput->get('recipient', 'smolensk@print-express99.ru', 'email');
         $mailer->addRecipient($recipient);
         $mailbody = "Имя отправителя: " . $this->SenderName . "\r\n" .
                 "Контактный телефон: " . $this->SenderPhone . "\r\n" .
@@ -43,11 +37,21 @@ class SendPostControllerSendPost extends JControllerForm {
         $mailer->setSubject("ЗАЯВКА С САЙТА!");
         $mailer->setBody($mailbody);
 
-        $send = $mailer->Send();
-        if ($send !== true) {
-            echo '<h1>Ошибка отправки письма</h1>';
-        } else {
+        if ($mailer->Send()) {
+            $db = JFactory::getDbo();
+            
+            $formData = array();
+            $formData['date'] = $db->quote(JFactory::getDate()->toSql());
+            $formData['name'] = $db->quote($this->SenderName);
+            $formData['phone'] = $db->quote($this->SenderPhone);
+            $formData['email'] = $db->quote($this->SenderEmail);
+            $formData['details'] = $db->quote($this->SenderDetails);
+            $formData['recipient'] = $db->quote($recipient);
+            
+            $model = $this->getModel()->save2db($formData);
             echo '<h1>Письмо успешно отправлено</h1>';
+        } else {
+            echo '<h1>Ошибка отправки письма</h1>';
         }
     }
 

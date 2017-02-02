@@ -18,4 +18,9 @@ defined('_JEXEC') or die('Restricted access');
  */
 class SendPostControllerSendPost extends JControllerForm
 {
+    protected function save($key = null, $urlVar = null) {
+        
+        
+        parent::save($key, $urlVar);
+    }
 }

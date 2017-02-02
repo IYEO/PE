@@ -73,4 +73,28 @@ class SendPostModelSendPost extends JModelForm {
         $this->setState('params', $params);
     }
 
+    /* Метод для сохранения в БД данных, отправленных пользователем с сайта.
+     * @param    array   $formData   Данные, введённые пользователем
+     */
+
+    public function save2db($formData) {
+        // Get a db connection.
+        $db = JFactory::getDbo();
+        
+        // Create a new query object.
+        $query = $db->getQuery(true);
+
+        // Insert columns.
+        $columns = array('date', 'name', 'phone', 'email', 'details', 'recipient');
+//        $values = implode(',', $formData);
+
+        $query->insert($db->quoteName('#__sendpost_data'))
+                ->columns($db->quoteName($columns))
+                ->values(implode(',', $formData));
+
+        // Set the query using our newly populated query object and execute it.
+        $db->setQuery($query);
+        $db->execute();
+    }
+
 }
