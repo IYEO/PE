@@ -84,7 +84,7 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 			<?php $rowcount = ((int) $key % (int) $this->columns) + 1; ?>
 			<?php if ($rowcount == 1) : ?>
 				<?php $row = $counter / $this->columns; ?>
-				<div class="items-row cols-<?php echo (int) $this->columns; ?> <?php echo 'row-' . $row; ?> row-fluid clearfix">
+				<div class="items-row cols-<?php echo (int) $this->columns; ?> <?php echo 'row-' . $row; ?> row clearfix">
 			<?php endif; ?>
 			<div class="col-sm-<?php echo round((12 / $this->columns)); ?> col-md-<?php echo round((12 / $this->columns)); ?> col-lg-<?php echo round((12 / $this->columns)); ?>">
 				<div class="item column-<?php echo $rowcount; ?><?php echo $item->state == 0 ? ' system-unpublished' : null; ?>"

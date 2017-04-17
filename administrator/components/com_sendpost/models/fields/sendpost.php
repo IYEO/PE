@@ -20,48 +20,11 @@ JFormHelper::loadFieldClass('email');
 class JFormFieldSendPost extends JFormFieldEMail {
 
     /**
-     * The field type.
-     *
-     * @var         string
+     * The field type.     
      */
-    protected $type = 'SendPost';
-
-    /**
-     * Method to get a list of options for a list input.
-     *
-     * @return  array  An array of JHtml options.
-     */
-//    protected function getOptions() {
-//        $db = JFactory::getDBO();
-//        $query = $db->getQuery(true);
-//        $query->select('id,recipient');
-//        $query->from('#__sendpost_recipient');
-//        $db->setQuery((string) $query);
-//        $messages = $db->loadObjectList();
-//        $options = array();
-//
-//        if ($messages) {
-//            foreach ($messages as $message) {
-//                $options[] = JHtml::_('select.option', $message->id, $message->recipient);
-//            }
-//        }
-//
-//        $options = array_merge(parent::getOptions(), $options);
-//
-//        return $options;
-//    }
-
+    
     protected function getInput() {
-//        $db = JFactory::getDBO();
-//        $query = $db->getQuery(true);
-//        $query->select('recipient');
-//        $query->from($db->quoteName('#__sendpost_recipient'));
-//        $db->setQuery((string) $query);
-//        $recipient = $db->loadResult();
-//
-//        if ($recipient) $this->value = $recipient;
-
-        return parent::getInput();
+        return parent::getInput();  //получаем поле типа email
     }
 
 }

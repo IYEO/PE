@@ -12,7 +12,7 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 
 $document = JFactory::getDocument();
 //Переопределяем стиль для иконок контролов Яндекс.Панорам, чтобы иконки не "поехали" вверх и вправо:
-$document->addStyleDeclaration('.ymaps-2-1-45-islets_maps-button__icon {box-sizing: content-box}');
+$document->addStyleDeclaration('ymaps[class$=-islets_maps-button__icon] {box-sizing: content-box}');
 
 JHtml::script('respond.js', FALSE, TRUE);     //add Respond.js for IE8 users
 JHtml::_('jquery.framework');   //add JQuery
@@ -33,13 +33,6 @@ $canEdit = $params->get('access-edit');
 $user = JFactory::getUser();
 $info = $params->get('info_block_position', 0);
 
-if (JModuleHelper::isEnabled("custom")) :   //проверяем ПОЛЬЗОВАТЕЛЬСКИЙ модуль по имени custom
-    // Добавляем data-атрибуты, чтобы корректно работало боковое меню
-    JFactory::getDocument()->addScriptDeclaration('
-        jQuery(window).ready(function () {
-            jQuery(\'body\').attr(\'data-spy\', \'scroll\').attr(\'data-target\', \'#spyrecommendations\');
-        });');
-endif;
 ?>
 <div class="item-page<?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Article">
     <meta itemprop="inLanguage" content="<?php echo ($this->item->language === '*') ? JFactory::getConfig()->get('language') : $this->item->language; ?>" />

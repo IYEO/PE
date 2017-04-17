@@ -25,7 +25,7 @@ if ($width) {
 }
 ?>
 <div id="search" class="search<?php echo $moduleclass_sfx ?>">
-    <form action="<?php echo JRoute::_('index.php'); ?>" method="post" role="search" class="form-validate">
+    <form action="<?php echo JRoute::_('index.php'); ?>" method="post" role="search">
         <div class="form-group">
             <div class="input-group input-group-lg">
                 <span class="input-group-btn">

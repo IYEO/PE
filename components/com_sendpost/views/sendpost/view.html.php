@@ -59,31 +59,30 @@ class SendPostViewSendPost extends JViewLegacy {
 
     protected function prepareDocument() {
         $app = JFactory::getApplication();
-//        $menus = $app->getMenu();
-//        $user = JFactory::getUser();
-//        $login = $user->get('guest') ? true : false;
-//        $title = null;
+        $menus = $app->getMenu();
+        $title = null;
+        
         // Because the application sets a default page title,
         // we need to get it from the menu item itself
-//        $menu = $menus->getActive();
-//
-//        if ($menu) {
-//            $this->params->def('page_heading', $this->params->get('page_title', $menu->title));
-//        } else {
-//            $this->params->def('page_heading', $login ? JText::_('JLOGIN') : JText::_('JLOGOUT'));
-//        }
-//
-//        $title = $this->params->get('page_title', '');
-//
-//        if (empty($title)) {
-//            $title = $app->get('sitename');
-//        } elseif ($app->get('sitename_pagetitles', 0) == 1) {
-//            $title = JText::sprintf('JPAGETITLE', $app->get('sitename'), $title);
-//        } elseif ($app->get('sitename_pagetitles', 0) == 2) {
-//            $title = JText::sprintf('JPAGETITLE', $title, $app->get('sitename'));
-//        }
-//
-//        $this->document->setTitle($title);
+        $menu = $menus->getActive();
+
+        if ($menu) {
+            $this->params->def('page_heading', $this->params->get('page_title', $menu->title));
+        } else {
+            $this->params->def('page_heading', JText::_('COM_SENDPOST_DEFAULT_PAGE_TITLE'));
+        }
+
+        $title = $this->params->get('page_title', '');
+
+        if (empty($title)) {
+            $title = $app->get('sitename');
+        } elseif ($app->get('sitename_pagetitles', 0) == 1) {
+            $title = JText::sprintf('JPAGETITLE', $app->get('sitename'), $title);
+        } elseif ($app->get('sitename_pagetitles', 0) == 2) {
+            $title = JText::sprintf('JPAGETITLE', $title, $app->get('sitename'));
+        }
+
+        $this->document->setTitle($title);
 
         if ($this->params->get('menu-meta_description')) {
             $this->document->setDescription($this->params->get('menu-meta_description'));

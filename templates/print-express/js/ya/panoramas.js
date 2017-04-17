@@ -49,7 +49,7 @@ ymaps.ready(function () {
                         {
                             scrollZoomBehavior: false,  //отключаем масштабирование колесом мыши
                             controls: ['fullscreenControl', 'zoomControl'],     //доступные контролы (кнопки)
-                            direction: [110, 0] // направление взгляда
+                            direction: [40, 0] // направление взгляда
                         }
                     );
                 }

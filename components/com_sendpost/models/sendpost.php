@@ -9,6 +9,9 @@ defined('_JEXEC') or die;
  * @since  0.0.1
  */
 class SendPostModelSendPost extends JModelForm {
+
+    protected $data;
+
     /**
      * Method to get a table object, load it if necessary.
      *
@@ -36,7 +39,7 @@ class SendPostModelSendPost extends JModelForm {
      */
     public function getForm($data = array(), $loadData = true) {
         // Get the form.
-        $form = $this->loadForm('com_sendpost.sendpost', 'sendpost', array('load_data' => $loadData));
+        $form = $this->loadForm('com_sendpost.sendpost', 'sendpost', array('control' => 'jform', 'load_data' => $loadData));
 
         if (empty($form)) {
             return false;
@@ -53,14 +56,7 @@ class SendPostModelSendPost extends JModelForm {
      * @since   1.6
      */
     protected function loadFormData() {
-        // Check the session for previously entered form data.
-        $data = JFactory::getApplication()->getUserState(
-                'com_sendpost.sendpost.form.data', array()
-        );
-
-//        if (empty($data)) {
-//            $data = $this->getItem();
-//        }
+        $data = $this->getdata();
 
         return $data;
     }
@@ -80,7 +76,7 @@ class SendPostModelSendPost extends JModelForm {
     public function save2db($formData) {
         // Get a db connection.
         $db = JFactory::getDbo();
-        
+
         // Create a new query object.
         $query = $db->getQuery(true);
 
@@ -88,13 +84,47 @@ class SendPostModelSendPost extends JModelForm {
         $columns = array('date', 'name', 'phone', 'email', 'details', 'recipient');
 //        $values = implode(',', $formData);
 
-        $query->insert($db->quoteName('#__sendpost_data'))
+        $query->insert($db->quoteName('#__sendpost'))
                 ->columns($db->quoteName($columns))
                 ->values(implode(',', $formData));
 
         // Set the query using our newly populated query object and execute it.
         $db->setQuery($query);
         $db->execute();
+    }
+
+    public function getData() {
+        if ($this->data === null) {
+            $this->data = new stdClass;
+            $app = JFactory::getApplication();
+            $params = JComponentHelper::getParams('com_sendpost');
+
+            // Override the base user data with any data in the session.
+            $temp = (array) $app->getUserState('com_sendpost.sendpost.data', array());
+
+            $form = $this->getForm(array(), false);
+
+            foreach ($temp as $k => $v) {
+                // Only merge the field if it exists in the form.
+                if ($form->getField($k) !== false) {
+                    $this->data->$k = $v;
+                }
+            }
+
+            // Get the dispatcher.
+            $dispatcher = JEventDispatcher::getInstance();
+
+            // Trigger the data preparation event.
+            $results = $dispatcher->trigger('onContentPrepareData', array('com_sendpost.sendpost', $this->data));
+
+            // Check for errors encountered while preparing the data.
+            if (count($results) && in_array(false, $results, true)) {
+                $this->setError($dispatcher->getError());
+                $this->data = false;
+            }
+        }
+
+        return $this->data;
     }
 
 }

@@ -23,14 +23,14 @@ endif;
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" >
     <head>
         <jdoc:include type="head" />
-        <?php        
+        <?php
         $doc->setGenerator(""); //remove "Joomla! - Open Source Content Management" from <head>
         $doc->setMetaData("X-UA-Compatible", "IE=edge", TRUE);
-        $doc->setMetaData("viewport", "width=device-width, initial-scale=1", FALSE);        
-        JHtml::stylesheet('template.css', array(), TRUE);   //add Bootstrap stylesheet (v.3.3.6)        
+        $doc->setMetaData("viewport", "width=device-width, initial-scale=1", FALSE);
+        JHtml::stylesheet('template.css', array(), TRUE);   //add Bootstrap stylesheet (v.3.3.6)
         JHtml::script('respond.js', FALSE, TRUE);     //add Respond.js for IE8 users
         JHtml::_('jquery.framework');   //add JQuery
-        JHtml::script('bootstrap.min.js', FALSE, TRUE);     //add Bootstrap .js (v.3.3.5)        
+        JHtml::script('bootstrap.min.js', FALSE, TRUE);     //add Bootstrap .js (v.3.3.5)
         ?>
     </head>
     <body>
@@ -49,7 +49,7 @@ endif;
 //                  Top Menu          ?>
                     <jdoc:include type="modules" name="top" style="none" /><?php
 //                  Search          ?>
-                    <jdoc:include type="modules" name="search" style="none" />                    
+                    <jdoc:include type="modules" name="search" style="none" />
                 </div>
             </nav>
         <?php endif;
@@ -61,7 +61,7 @@ endif;
 //      Content        ?>
         <div class="container-fluid">
             <jdoc:include type="message" />
-        </div>        
+        </div>
 
         <jdoc:include type="modules" name="carousel" style="none" />    <?php  //модуль "Carousel" для показа слайд-шоу ?>
         <jdoc:include type="component" />

@@ -8,7 +8,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 // No direct access
-defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die;
 
 /**
  * SendPost Table class
@@ -22,8 +22,9 @@ class SendPostTableSendPost extends JTable {
      *
      * @param   JDatabaseDriver  &$db  A database connector object
      */
+    
     function __construct(&$db) {
-        parent::__construct('#__sendpost_recipient', 'id', $db);
+        parent::__construct('#__sendpost', 'id', $db);
     }
 
 }

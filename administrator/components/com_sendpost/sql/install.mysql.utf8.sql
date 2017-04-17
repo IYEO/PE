@@ -1,7 +1,6 @@
-DROP TABLE IF EXISTS `#__sendpost_data`;
-DROP TABLE IF EXISTS `#__sendpost_recipient`;
+DROP TABLE IF EXISTS `#__sendpost`;
 
-CREATE TABLE `#__sendpost_data` (
+CREATE TABLE `#__sendpost` (
     `id` INT(11) NOT NULL AUTO_INCREMENT,
     `date` TIMESTAMP NOT NULL,
     `name` VARCHAR(100) NOT NULL,
@@ -13,13 +12,3 @@ CREATE TABLE `#__sendpost_data` (
 )
 AUTO_INCREMENT = 0
 DEFAULT CHARSET = utf8;
-
-CREATE TABLE `#__sendpost_recipient` (
-    `id` TINYINT(1) UNSIGNED NOT NULL DEFAULT 1,
-    `recipient` VARCHAR(100) NOT NULL DEFAULT 'smolensk@print-express99.ru',
-    PRIMARY KEY (`id`)
-)
-DEFAULT CHARSET = utf8;
-
-INSERT INTO `#__sendpost_recipient` (`id`, `recipient`) VALUES
-    (1, 'smolensk@print-express99.ru');

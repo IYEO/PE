@@ -14,22 +14,36 @@ defined('_JEXEC') or die('Restricted Access');
     <table class="table table-striped table-hover">
         <thead>
             <tr>
-                <th width="1%"><?php echo JText::_('COM_SENDPOST_NUM'); ?></th>
                 <th width="2%">
-                    <?php echo JHtml::_('grid.checkall'); ?>
+                    <?php echo JText::_('COM_SENDPOST_SENDPOSTS_NUM'); ?>
                 </th>
-                <th width="90%">
+                <th width="3%">
+                    <?php echo JText::_('COM_SENDPOST_SENDPOSTS_ID'); ?>
+                </th>
+                <th width="10%">
+                    <?php echo JText::_('COM_SENDPOST_SENDPOSTS_DATE'); ?>
+                </th>
+                <th width="20%">
                     <?php echo JText::_('COM_SENDPOST_SENDPOSTS_NAME'); ?>
                 </th>
-                <th width="2%">
-                    <?php echo JText::_('COM_SENDPOST_ID'); ?>
+                <th width="20%">
+                    <?php echo JText::_('COM_SENDPOST_SENDPOSTS_PHONE'); ?>
+                </th>
+                <th width="10%">
+                    <?php echo JText::_('COM_SENDPOST_SENDPOSTS_EMAIL'); ?>
+                </th>
+                <th width="25%">
+                    <?php echo JText::_('COM_SENDPOST_SENDPOSTS_DETAILS'); ?>
+                </th>
+                <th width="10%">
+                    <?php echo JText::_('COM_SENDPOST_SENDPOSTS_RECIPIENT'); ?>
                 </th>
             </tr>
         </thead>
         <tfoot>
             <tr>
-                <td colspan="5">
-                    <?php //echo $this->pagination->getListFooter(); ?>
+                <td colspan="8">
+                    <?php echo $this->pagination->getListFooter(); ?>
                 </td>
             </tr>
         </tfoot>
@@ -44,15 +58,25 @@ defined('_JEXEC') or die('Restricted Access');
                             <?php echo $this->pagination->getRowOffset($i); ?>
                         </td>
                         <td>
-                            <?php echo JHtml::_('grid.id', $i, $row->id); ?>
+                            <?php echo $row->id; ?>
                         </td>
                         <td>
-                            <a href="<?php echo $link; ?>" title="<?php echo JText::_('COM_SENDPOST_EDIT_SENDPOST'); ?>">
-                                <?php echo $row->recipient; ?>
-                            </a>
+                            <?php echo $row->date; ?>
                         </td>
-                        <td align="center">
-                            <?php echo $row->id; ?>
+                        <td>
+                            <?php echo $row->name; ?>
+                        </td>
+                        <td>
+                            <?php echo $row->phone; ?>
+                        </td>
+                        <td>
+                            <?php echo $row->email; ?>
+                        </td>
+                        <td>
+                            <?php echo $row->details; ?>
+                        </td>
+                        <td>
+                            <?php echo $row->recipient; ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -60,17 +84,6 @@ defined('_JEXEC') or die('Restricted Access');
         </tbody>
     </table>
 
-    <input type="hidden" name="task" value=""/>
-    <input type="hidden" name="boxchecked" value="0"/>
+    <input type="hidden" name="task" value=""/>    
     <?php echo JHtml::_('form.token'); ?>
 </form>
-
-
-<!--    <form action="index.php?option=com_sendpost&view=sendpost" method="post" id="adminForm" name="adminForm">
-        <div class="form-group">
-            <fieldset class="adminform">
-                <label for="RecipientEmail"><?php //echo JText::_('COM_SENDPOST_ADMIN_RECIPIENT_EMAIL');     ?></label>
-                <input type="email" class="form-control" id="RecipientEmail" placeholder="<?php //echo JText::_('COM_SENDPOST_ADMIN_RECIPIENT_EMAIL_PLACEHOLDER');     ?>">
-            </fieldset>
-        </div>
-    </form>-->

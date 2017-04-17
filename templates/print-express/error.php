@@ -6,69 +6,93 @@
  * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
-
 defined('_JEXEC') or die;
-if (!isset($this->error))
-{
-	$this->error = JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
-	$this->debug = false;
+
+if (!isset($this->error)) {
+    $this->error = JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
+    $this->debug = false;
 }
+jimport('joomla.application.module.helper'); // Подключение вывода модулей из ядра
 //get language and direction
 $doc = JFactory::getDocument();
+// Добавляем data-атрибуты в пункт меню поиска, чтобы корректно работало с помощью collapse:
+$doc->addScriptDeclaration('
+    jQuery(document).ready(function () {
+        jQuery(\'a.search\').attr(\'data-toggle\', \'collapse\');
+    });');
 $this->language = $doc->language;
 $this->direction = $doc->direction;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
-<head>
-	<title><?php echo $this->error->getCode(); ?> - <?php echo $this->title; ?></title>
-	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/system/css/error.css" type="text/css" />
-	<?php if ($this->direction == 'rtl') : ?>
-	<link rel="stylesheet" href="<?php echo $this->baseurl; ?>/templates/system/css/error_rtl.css" type="text/css" />
-	<?php endif; ?>
-	<?php
-		$debug = JFactory::getConfig()->get('debug_lang');
-		if (JDEBUG || $debug)
-		{
-	?>
-		<link rel="stylesheet" href="<?php echo $this->baseurl ?>/media/cms/css/debug.css" type="text/css" />
-	<?php
-		}
-	?>
-</head>
-<body>
-	<div class="error">
-		<div id="outline">
-		<div id="errorboxoutline">
-			<div id="errorboxheader"><?php echo $this->error->getCode(); ?> - <?php echo $this->error->getMessage(); ?></div>
-			<div id="errorboxbody">
-			<p><strong><?php echo JText::_('JERROR_LAYOUT_NOT_ABLE_TO_VISIT'); ?></strong></p>
-				<ol>
-					<li><?php echo JText::_('JERROR_LAYOUT_AN_OUT_OF_DATE_BOOKMARK_FAVOURITE'); ?></li>
-					<li><?php echo JText::_('JERROR_LAYOUT_SEARCH_ENGINE_OUT_OF_DATE_LISTING'); ?></li>
-					<li><?php echo JText::_('JERROR_LAYOUT_MIS_TYPED_ADDRESS'); ?></li>
-					<li><?php echo JText::_('JERROR_LAYOUT_YOU_HAVE_NO_ACCESS_TO_THIS_PAGE'); ?></li>
-					<li><?php echo JText::_('JERROR_LAYOUT_REQUESTED_RESOURCE_WAS_NOT_FOUND'); ?></li>
-					<li><?php echo JText::_('JERROR_LAYOUT_ERROR_HAS_OCCURRED_WHILE_PROCESSING_YOUR_REQUEST'); ?></li>
-				</ol>
-			<p><strong><?php echo JText::_('JERROR_LAYOUT_PLEASE_TRY_ONE_OF_THE_FOLLOWING_PAGES'); ?></strong></p>
+    <head>
+        <base href="http://jpe:8080/" />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="rights" content="© ООО &quot;Принт-Экспресс&quot;, 2017" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-				<ul>
-					<li><a href="<?php echo $this->baseurl; ?>/index.php" title="<?php echo JText::_('JERROR_LAYOUT_GO_TO_THE_HOME_PAGE'); ?>"><?php echo JText::_('JERROR_LAYOUT_HOME_PAGE'); ?></a></li>
-				</ul>
+        <link href="/templates/print-express/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+        <link href="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/css/template.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo $this->baseurl; ?>/templates/print-express/css/system/../../css/home.css" rel="stylesheet" type="text/css" />
 
-			<p><?php echo JText::_('JERROR_LAYOUT_PLEASE_CONTACT_THE_SYSTEM_ADMINISTRATOR'); ?>.</p>
-			<div id="techinfo">
-			<p><?php echo $this->error->getMessage(); ?></p>
-			<p>
-				<?php if ($this->debug) :
-					echo $this->renderBacktrace();
-				endif; ?>
-			</p>
-			</div>
-			</div>
-		</div>
-		</div>
-	</div>
-</body>
+        <script src="<?php echo $this->baseurl; ?>/media/jui/js/jquery.min.js" type="text/javascript"></script>
+        <script src="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/js/respond.js" type="text/javascript"></script>
+        <script src="<?php echo $this->baseurl; ?>/templates/<?php echo $this->template; ?>/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="/media/system/js/html5fallback.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function () {
+                jQuery('a.search').attr('data-toggle', 'collapse');
+            });
+        </script>
+        <title><?php echo $this->error->getCode(); ?> - <?php echo $this->title; ?></title>
+        <?php
+        $debug = JFactory::getConfig()->get('debug_lang');
+        if (JDEBUG || $debug) {
+            ?>
+            <link rel="stylesheet" href="<?php echo $this->baseurl ?>/media/cms/css/debug.css" type="text/css" />
+            <?php
+        }
+        ?>
+    </head>
+    <body class="error404">
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-menu" aria-expanded="false">
+                        <span class="sr-only"><?php echo JText::_('TPL_PE_MODCHROME_PE_FIXED_NAVBAR_TOGGLE_NAVIGATION'); ?></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <?php
+                    //модуль с брендом компании в Navbar
+                    $modules = JModuleHelper::getModules('brand'); // Здесь вводим название модульной позиции
+                    foreach ($modules as $module) {
+                        echo JModuleHelper::renderModule($module);
+                    }
+                    ?>
+                </div><?php
+//              Top Menu
+                $modules = JModuleHelper::getModules('top');
+                foreach ($modules as $module) {
+                    echo JModuleHelper::renderModule($module);
+                }
+//              Search
+                $modules = JModuleHelper::getModules('search');
+                foreach ($modules as $module) {
+                    echo JModuleHelper::renderModule($module);
+                }
+                ?>
+            </div>
+        </nav>
+
+        <div class = "container-fluid">
+            <div id="help404" class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                    <span class="fs20">Начните с <a href="<?php echo $this->baseurl; ?>index.php">главной страницы</a> или воспользуйтесь <a href="<?php echo $this->baseurl; ?>index.php/search">поиском</a>.</span>
+                </div>
+            </div>            
+        </div>
+    </body>
 </html>

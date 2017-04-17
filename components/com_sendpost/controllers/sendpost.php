@@ -5,53 +5,103 @@ defined('_JEXEC') or die;
 
 class SendPostControllerSendPost extends JControllerForm {
 
-    protected $SenderName;      //Имя отправителя письма
-    protected $SenderPhone;     //Номер телефона отправителя письма
-    protected $SenderEmail;     //Email отправителя письма
-    protected $SenderDetails;   //Подробности, которые указал отправитель письма
+//    protected $SenderName;      //Имя отправителя письма
+
+//    protected $SenderPhone;     //Номер телефона отправителя письма
+//    protected $SenderEmail;     //Email отправителя письма
+//    protected $SenderDetails;   //Подробности, которые указал отправитель письма
 
     public function send() {
-////        if (!$model->validate($model,$model->get("Form"))) {
-////            return FALSE;
-////        }
+        // Check for request forgeries.
+        JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
-        //Получаем данные, введённые пользователем на сайте:
-        $this->SenderName = $this->input->getString(trim('name'));
-        $this->SenderPhone = $this->input->getString(trim('phone'));
-        $this->SenderEmail = $this->input->getString(trim('email'));
-        $this->SenderDetails = $this->input->getString(trim('details'));
+        $app = JFactory::getApplication();
+        $model = $this->getModel('SendPost');
 
-        //Создаём письмо для отправки:
-        $mailer = JFactory::getMailer();
+        // Get the user data.
+        $requestData = $this->input->post->get('jform', array(), 'array');
 
-        $sender = array($this->SenderEmail, $this->SenderName);   //Отправитель в формате Имя <Email>
-        $mailer->setSender($sender);
+        // Validate the posted data.
+        $form = $model->getForm();
 
-        $jinput = JFactory::getApplication()->input;
-        $recipient = $jinput->get('recipient', 'smolensk@print-express99.ru', 'email');
-        $mailer->addRecipient($recipient);
-        $mailbody = "Имя отправителя: " . $this->SenderName . "\r\n" .
-                "Контактный телефон: " . $this->SenderPhone . "\r\n" .
-                "Адрес электронной почты: " . $this->SenderEmail . "\r\n" .
-                "Текст сообщения (подробности): " . $this->SenderDetails;
-        $mailer->setSubject("ЗАЯВКА С САЙТА!");
-        $mailer->setBody($mailbody);
+        if (!$form) {
+            JError::raiseError(500, $model->getError());
 
-        if ($mailer->Send()) {
-            $db = JFactory::getDbo();
-            
-            $formData = array();
-            $formData['date'] = $db->quote(JFactory::getDate()->toSql());
-            $formData['name'] = $db->quote($this->SenderName);
-            $formData['phone'] = $db->quote($this->SenderPhone);
-            $formData['email'] = $db->quote($this->SenderEmail);
-            $formData['details'] = $db->quote($this->SenderDetails);
-            $formData['recipient'] = $db->quote($recipient);
-            
-            $model = $this->getModel()->save2db($formData);
-            echo '<h1>Письмо успешно отправлено</h1>';
+            return false;
+        }
+
+        $data = $model->validate($form, $requestData);
+
+        // Check for validation errors.
+        if ($data === false) {
+            // Get the validation messages.
+            $errors = $model->getErrors();
+
+            // Push up to three validation messages out to the user.
+            for ($i = 0, $n = count($errors); $i < $n && $i < 3; $i++) {
+                if ($errors[$i] instanceof Exception) {
+                    $app->enqueueMessage($errors[$i]->getMessage(), 'warning');
+                } else {
+                    $app->enqueueMessage($errors[$i], 'warning');
+                }
+            }
+
+            // Redirect back to the registration screen.
+            $this->setRedirect(JRoute::_('index.php?option=com_sendpost', false));
+
+            return false;
         } else {
-            echo '<h1>Ошибка отправки письма</h1>';
+            //Получаем данные, введённые пользователем на сайте:
+//            $this->SenderName = $this->input->getString(trim('name'));
+//            $this->SenderPhone = $this->input->getString(trim('phone'));
+//            $this->SenderEmail = $this->input->getString(trim('email'));
+//            $this->SenderDetails = $this->input->getString(trim('details'));
+            //Создаём письмо для отправки:
+            $mailer = JFactory::getMailer();
+
+            //Если пользователь указал свой email, получаем адрес. Иначе указываем своего отправителя письма:
+            if ($data['email'] <> "") {
+                $sender = array($data['email'], $data['name']);   //Отправитель в формате Имя <Email>
+            } else {
+                $sender = array("peadmin@goethe.timeweb.ru", $data['name']);
+            }
+
+            $mailer->setSender($sender);
+
+            //Получаем данные, введённые пользователем, формируем тело письма:
+            $jinput = JFactory::getApplication()->input;
+            $recipient = $jinput->get('recipient', 'smolensk@print-express99.ru', 'email');
+            $mailer->addRecipient($recipient);
+            $mailbody = "Имя отправителя: " . $data['name'] . "\r\n" .
+                    "Контактный телефон: " . $data['phone'] . "\r\n" .
+                    "Адрес электронной почты: " . $data['email'] . "\r\n" .
+                    "Текст сообщения (подробности): " . $data['details'];
+            $mailer->setSubject("ЗАЯВКА С САЙТА!");
+            $mailer->setBody($mailbody);
+
+            if ($mailer->Send()) {  //если письмо успешно отправлено, сохраняем данные в БД и в сессии
+             
+                // сохраняем в сессию введённое пользователем имя для использования на странице с благодарностями:
+                $app->setUserState('com_sendpost.sendpost.data', $data['name']);
+
+                //подготавливаем данные для обработки в MySQL
+                $db = JFactory::getDbo();
+
+                
+                $formData['date'] = $db->quote(JFactory::getDate()->toSql());
+                $formData['name'] = $db->quote($data['name']);
+                $formData['phone'] = $db->quote($data['phone']);
+                $formData['email'] = $db->quote($data['email']);
+                $formData['details'] = $db->quote($data['details']);
+                $formData['recipient'] = $db->quote($recipient);
+
+                $model = $this->getModel()->save2db($formData);     //сохранение данных в БД
+                
+                // Перенаправляем пользователя на страницу с благодарностями:
+                $this->setRedirect(JRoute::_('index.php?option=com_sendpost&view=thanks', false));
+            } else {
+                echo '<h1>Ошибка отправки письма</h1>';
+            }
         }
     }
 

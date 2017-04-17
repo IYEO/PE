@@ -8,7 +8,7 @@
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 // No direct access to this file
-defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die;
 
 /**
  * SendPost Model
@@ -16,6 +16,7 @@ defined('_JEXEC') or die('Restricted access');
  * @since  0.0.1
  */
 class SendPostModelSendPosts extends JModelList {
+
     /**
      * Method to build an SQL query to load the list data.
      *
@@ -28,7 +29,7 @@ class SendPostModelSendPosts extends JModelList {
 
         // Create the base select statement.
         $query->select('*')
-              ->from($db->quoteName('#__sendpost_recipient'));
+              ->from($db->quoteName('#__sendpost'));
 
         return $query;
     }

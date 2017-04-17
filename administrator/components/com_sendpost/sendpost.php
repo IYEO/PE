@@ -9,7 +9,7 @@
  */
 
 // No direct access to this file
-defined('_JEXEC') or die('Restricted access');
+defined('_JEXEC') or die;
 
 // Get an instance of the controller prefixed by SendPost
 $controller = JControllerLegacy::getInstance('SendPost');

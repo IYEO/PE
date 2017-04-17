@@ -3023,7 +3023,7 @@ select[multiple].input-lg {
 .btn:hover,
 .btn:focus,
 .btn.focus {
-  color: #ffffff;
+  color: #333333;
   text-decoration: none;
 }
 .btn:active,
@@ -3047,27 +3047,27 @@ fieldset[disabled] a.btn {
   pointer-events: none;
 }
 .btn-default {
-  color: #ffffff;
-  background-color: #ff9933;
-  border-color: #ff8c19;
+  color: #333333;
+  background-color: #ffffff;
+  border-color: #cccccc;
 }
 .btn-default:focus,
 .btn-default.focus {
-  color: #ffffff;
-  background-color: #ff8000;
-  border-color: #994c00;
+  color: #333333;
+  background-color: #e6e6e6;
+  border-color: #8c8c8c;
 }
 .btn-default:hover {
-  color: #ffffff;
-  background-color: #ff8000;
-  border-color: #db6e00;
+  color: #333333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
 }
 .btn-default:active,
 .btn-default.active,
 .open > .dropdown-toggle.btn-default {
-  color: #ffffff;
-  background-color: #ff8000;
-  border-color: #db6e00;
+  color: #333333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
 }
 .btn-default:active:hover,
 .btn-default.active:hover,
@@ -3078,9 +3078,9 @@ fieldset[disabled] a.btn {
 .btn-default:active.focus,
 .btn-default.active.focus,
 .open > .dropdown-toggle.btn-default.focus {
-  color: #ffffff;
-  background-color: #db6e00;
-  border-color: #994c00;
+  color: #333333;
+  background-color: #d4d4d4;
+  border-color: #8c8c8c;
 }
 .btn-default:active,
 .btn-default.active,
@@ -3096,12 +3096,12 @@ fieldset[disabled] .btn-default:focus,
 .btn-default.disabled.focus,
 .btn-default[disabled].focus,
 fieldset[disabled] .btn-default.focus {
-  background-color: #ff9933;
-  border-color: #ff8c19;
+  background-color: #ffffff;
+  border-color: #cccccc;
 }
 .btn-default .badge {
-  color: #ff9933;
-  background-color: #ffffff;
+  color: #ffffff;
+  background-color: #333333;
 }
 .btn-primary {
   color: #ffffff;
@@ -7101,6 +7101,46 @@ P {
 #closeSearch {
   font-size: 46px;
   width: 46px;
+}
+#sendpost {
+  margin: 20px 0px 60px 0px;
+}
+.imgnews {
+  margin: 0px 15px 15px 0px;
+}
+.intro-imgnews {
+  margin-bottom: 10px;
+}
+.thanks-link {
+  transition: all 0.5s ease 0s;
+}
+.thanks-link p {
+  text-indent: 0px;
+}
+.thanks-link:hover span {
+  transform: translateY(-3px);
+}
+.error404 {
+  background: url("../../../uploaded/images/error.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: #c7c8ca;
+}
+#help404 {
+  width: 100%;
+  bottom: 5%;
+  position: fixed;
+}
+.rate {
+  color: #ffffff;
+}
+.rate .glyphicon-arrow-up {
+  color: #66cc33;
+}
+.rate .glyphicon-arrow-down {
+  color: #cc3300;
 }
 /*
     Flaticon icon font: Flaticon
