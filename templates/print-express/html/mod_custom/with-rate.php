@@ -79,10 +79,7 @@ $rate = get_rate($currency);
 
 <footer class="footer">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-2 col-md-2 col-lg-2 hidden-xs">
-                <!-- Yandex.Metrika informer --> <a href="https://metrika.yandex.ru/stat/?id=20887777&amp;from=informer" target="_blank" rel="nofollow"><img src="https://informer.yandex.ru/informer/20887777/3_1_99C0E1FF_79A0C1FF_1_pageviews" style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" class="ym-advanced-informer" data-cid="20887777" data-lang="ru" /></a> <!-- /Yandex.Metrika informer --> <!-- Yandex.Metrika counter --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter20887777 = new Ya.Metrika({ id:20887777, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <!-- /Yandex.Metrika counter -->
-            </div>
+        <div class="row">            
             <div class="col-xs-4 col-sm-2 col-md-2 col-lg-1">
                 <?php foreach ($rate as $key => $value) { ?>
                     <div class="rate" title="Сегодня: <?php echo $value['today']." (". $value['change'].")"; ?>">
@@ -95,7 +92,7 @@ $rate = get_rate($currency);
                     </div>
                 <?php } ?>
             </div>
-            <div class="col-xs-5 col-sm-7 col-md-7 col-lg-8">
+            <div class="col-xs-5 col-sm-9 col-md-9 col-lg-10">
                 <?php echo $module->content; ?>
             </div>
             <div class="col-xs-3 col-sm-1 col-md-1 col-lg-1">

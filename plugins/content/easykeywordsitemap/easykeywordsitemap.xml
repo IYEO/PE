@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" version="3.0" group="content" method="upgrade">
+    <name>PLG_EASYKEYWORDSITEMAP</name>
+    <version>3.3.1</version>
+    <creationDate>2016-03-30</creationDate>
+    <license>http://www.gnu.org/licenses/gpl</license>
+    <copyright>Copyright 2016 Viktor Vogel. All rights reserved.</copyright>
+    <author>Viktor Vogel</author>
+    <authoremail>admin@kubik-rubik.de</authoremail>
+    <authorurl>https://joomla-extensions.kubik-rubik.de/</authorurl>
+    <description>PLG_EASYKEYWORDSITEMAP_XML_DESCRIPTION</description>
+    <files>
+        <filename plugin="easykeywordsitemap">easykeywordsitemap.php</filename>
+        <filename plugin="easykeywordsitemap">index.html</filename>
+        <folder plugin="easykeywordsitemap">fields</folder>
+    </files>
+    <languages>
+        <language tag="en-GB">language/en-GB/en-GB.plg_content_easykeywordsitemap.ini</language>
+        <language tag="en-GB">language/en-GB/en-GB.plg_content_easykeywordsitemap.sys.ini</language>
+        <language tag="de-DE">language/de-DE/de-DE.plg_content_easykeywordsitemap.ini</language>
+        <language tag="de-DE">language/de-DE/de-DE.plg_content_easykeywordsitemap.sys.ini</language>
+    </languages>
+    <updateservers>
+        <server type="extension" priority="1" name="PLG_EASYKEYWORDSITEMAP">https://check.kubik-rubik.de/updates/easykeywordsitemap.xml</server>
+    </updateservers>
+    <config>
+        <fields name="params" addfieldpath="/plugins/content/easykeywordsitemap/fields">
+            <fieldset name="settings">
+                <field type="krdonationcodecheck" />
+                <field type="krtitle" name="spacer_nosettings" class="text" label="PLG_EASYKEYWORDSITEMAP_SPACER_NOSETTINGS" />
+            </fieldset>
+            <fieldset name="donation">
+                <field type="krdonationcodecheck" name="donation" />
+                <field name="donation_code" type="text" default="" size="40" label="KR_DONATION_CODE" description="KR_DONATION_CODEDESC" />
+            </fieldset>
+        </fields>
+    </config>
+</extension>

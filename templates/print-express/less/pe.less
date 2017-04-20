@@ -387,9 +387,12 @@ P {
         color: #999;
     }
 
-    @media (min-width: @screen-sm-min) and (max-width: @screen-md-max) {    //Small devices
-        #copy {
+    #copy {
+        @media (min-width: @screen-sm-min) and (max-width: @screen-md-max) {    //Small & Medium devices
             font-size: 11px;
+        }        
+        @media (min-width: @screen-lg-min) {    //Large devices
+            font-size: 13px;
         }
     }
 }
@@ -427,11 +430,11 @@ P {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;    
+    background-size: cover;
     background-color: #c7c8ca;
 }
 
-#help404 {    
+#help404 {
     width: 100%;
     bottom: 5%;
     position: fixed;
