@@ -95,12 +95,12 @@ $rate = get_rate($currency);
                     </div>
                 <?php } ?>
             </div>
-            <div class="col-xs-5 col-sm-6 col-md-7 col-lg-8">
+            <div class="col-xs-5 col-sm-7 col-md-7 col-lg-8">
                 <?php echo $module->content; ?>
             </div>
-            <div class="col-xs-3 col-sm-2 col-md-1 col-lg-1">
+            <div class="col-xs-3 col-sm-1 col-md-1 col-lg-1">
                 <a href="https://vk.com/pe_public" target="_blank">
-                    <img class="img-responsive pull-right vk" src="../../../../uploaded/images/vk.svg" title="Наша группа ВКонтакте" alt="Наша группа ВКонтакте"/>
+                    <img class="img-responsive pull-right vk" src="../../../../uploaded/images/vk.svg" title="Наше сообщество ВКонтакте. Присоединяйтесь!" alt="Наше сообщество ВКонтакте. Присоединяйтесь!"/>
                 </a>
             </div>
         </div>

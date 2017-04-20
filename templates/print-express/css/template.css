@@ -7098,6 +7098,14 @@ P {
   width: 40px;
   height: 40px;
 }
+.footer .content {
+  color: #999;
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  .footer #copy {
+    font-size: 11px;
+  }
+}
 #closeSearch {
   font-size: 46px;
   width: 46px;

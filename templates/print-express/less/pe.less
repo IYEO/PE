@@ -383,6 +383,15 @@ P {
         width: 40px;
         height: 40px;
     }
+    .content {
+        color: #999;
+    }
+
+    @media (min-width: @screen-sm-min) and (max-width: @screen-md-max) {    //Small devices
+        #copy {
+            font-size: 11px;
+        }
+    }
 }
 
 #closeSearch {
@@ -430,7 +439,7 @@ P {
 
 .rate {
     color: @white;
-    
+
     .glyphicon-arrow-up {color: @green;}
     .glyphicon-arrow-down {color: @red;}
 }
