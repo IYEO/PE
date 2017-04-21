@@ -1,6 +1,6 @@
 <?php
 class JConfig {
-	public $offline = '1';
+	public $offline = '0';
 	public $offline_message = 'Сайт временно закрыт на техническое обслуживание.<br /> Приносим свои извинения за предоставленные неудобства.<br />По всем вопросам просьба обращаться по телефонам: (4812) 32-80-70, 62-88-85, 32-71-54, 68-34-70.';
 	public $display_offline_message = '1';
 	public $offline_image = '';
@@ -49,7 +49,7 @@ class JConfig {
 	public $MetaVersion = '0';
 	public $robots = 'noindex, nofollow';
 	public $sef = '1';
-	public $sef_rewrite = '0';
+	public $sef_rewrite = '1';
 	public $sef_suffix = '0';
 	public $unicodeslugs = '0';
 	public $feed_limit = '10';

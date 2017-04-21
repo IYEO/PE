@@ -97,7 +97,7 @@ $rate = get_rate($currency);
             </div>
             <div class="col-xs-3 col-sm-1 col-md-1 col-lg-1">
                 <a href="https://vk.com/pe_public" target="_blank">
-                    <img class="img-responsive pull-right vk" src="../../../../uploaded/images/vk.svg" title="Наше сообщество ВКонтакте. Присоединяйтесь!" alt="Наше сообщество ВКонтакте. Присоединяйтесь!"/>
+                    <img class="img-responsive pull-right vk" src="../../../../uploaded/images/vk.svg" srcset="../../../../uploaded/images/vk.png" title="Наше сообщество ВКонтакте. Присоединяйтесь!" alt="Наше сообщество ВКонтакте. Присоединяйтесь!"/>
                 </a>
             </div>
         </div>

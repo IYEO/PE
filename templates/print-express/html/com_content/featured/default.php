@@ -14,7 +14,7 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 JHtml::_('behavior.caption');
 
 JHtml::stylesheet('template.css', array(), TRUE);   //add Bootstrap stylesheet (v.3.3.6)
-JHtml::stylesheet('../../../css/home.css', array(), TRUE);  //Стиль для главной страницы сайта
+JHtml::stylesheet('home.css', array(), TRUE);  //Стиль для главной страницы сайта
 
 // If the page class is defined, add to class as suffix.
 // It will be a separate class if the user starts it with a space
