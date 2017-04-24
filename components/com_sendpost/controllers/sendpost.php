@@ -73,7 +73,7 @@ class SendPostControllerSendPost extends JControllerForm {
             $recipient = $jinput->get('recipient', 'smolensk@print-express99.ru', 'email');
             $mailer->addRecipient($recipient);
             $mailbody = "Имя отправителя: " . $data['name'] . "\r\n" .
-                    "Контактный телефон: " . $data['phone'] . "\r\n" .
+                    "Контактный телефон: " . strip_tags($data['phone']) . "\r\n" .
                     "Адрес электронной почты: " . $data['email'] . "\r\n" .
                     "Текст сообщения (подробности): " . $data['details'];
             $mailer->setSubject("ЗАЯВКА С САЙТА!");
@@ -90,7 +90,7 @@ class SendPostControllerSendPost extends JControllerForm {
                 
                 $formData['date'] = $db->quote(JFactory::getDate()->toSql());
                 $formData['name'] = $db->quote($data['name']);
-                $formData['phone'] = $db->quote($data['phone']);
+                $formData['phone'] = $db->quote(strip_tags($data['phone']));
                 $formData['email'] = $db->quote($data['email']);
                 $formData['details'] = $db->quote($data['details']);
                 $formData['recipient'] = $db->quote($recipient);

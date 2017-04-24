@@ -26,8 +26,7 @@
             size="30"
             hint="COM_SENDPOST_FORM_SENDER_PHONE_PLACEHOLDER"
             filter="string"
-            required="true"
-            validate="tel"
+            required="true"            
             message="COM_SENDPOST_FORM_SENDER_PHONE_MESSAGE"
         />
         <field
